@@ -10,7 +10,7 @@ import shuvalov.nikita.boredgame.R;
  */
 
 public class LumberMill extends Building {
-    private static final int LUMBER_MILL_HP = 5;
+    public static final int LUMBER_MILL_HP = 5;
 
 
     public LumberMill() {
