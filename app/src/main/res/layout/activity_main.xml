@@ -11,8 +11,31 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="shuvalov.nikita.boredgame.MainActivity">
 
-    <TextView
+    <Button
+        android:id="@+id/open_lobby_butt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+        android:text="Open Server Lobby"
+        android:layout_centerHorizontal="true"/>
+    <Button
+        android:id="@+id/create_new_butt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/open_lobby_butt"
+        android:layout_centerHorizontal="true"
+        android:text="CREATE NEW ROOM"/>
+    <EditText
+        android:id="@+id/your_name_entry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/create_new_butt"
+        android:layout_centerHorizontal="true"
+        android:hint="Enter your name"/>
+    <Button
+        android:id="@+id/enter_name_butt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/your_name_entry"
+        android:text="Update name"
+        android:layout_alignParentRight="true"/>
 </RelativeLayout>
