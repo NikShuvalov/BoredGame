@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "593971768447",
+    "firebase_url": "https://boredgame-b4a97.firebaseio.com",
+    "project_id": "boredgame-b4a97",
+    "storage_bucket": "boredgame-b4a97.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:593971768447:android:683983e5f8132bb2",
+        "android_client_info": {
+          "package_name": "shuvalov.nikita.boredgame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "593971768447-nk8aevem15rh9fq4l41mkv9kjsns76v5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3r_va0nbnGavtdJU6fpem0tq4GVhvuDg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "593971768447-nk8aevem15rh9fq4l41mkv9kjsns76v5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
