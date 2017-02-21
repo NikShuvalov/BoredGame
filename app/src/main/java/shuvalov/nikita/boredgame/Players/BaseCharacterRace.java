@@ -4,6 +4,8 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
+import shuvalov.nikita.boredgame.Buildings.Building;
+import shuvalov.nikita.boredgame.Buildings.Generic.LumberMill;
 import shuvalov.nikita.boredgame.Cards.ResourceCard;
 
 /**
@@ -18,6 +20,7 @@ public abstract class BaseCharacterRace {
     private String race;
     private int draftStep;
     private ArrayList<ResourceCard> draftedCards;
+    private ArrayList<Building> townBuildings;
 
     public BaseCharacterRace(){}
 
@@ -31,7 +34,17 @@ public abstract class BaseCharacterRace {
         this.mana = mana;
         this.race = race;
         this.draftedCards = new ArrayList<>();
+        createBasicBuildings();
         draftStep=0;
+    }
+
+    private void createBasicBuildings(){
+        this.townBuildings = new ArrayList<>();
+        townBuildings.add(new LumberMill());
+    }
+
+    public ArrayList<Building> getTownBuildings(){
+        return townBuildings;
     }
 
     public String getName() {
@@ -148,4 +161,5 @@ public abstract class BaseCharacterRace {
 
     public String getCharacterRace(){return race;}
     public abstract String getRaceDescription(Context context);
+
 }

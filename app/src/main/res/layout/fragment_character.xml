@@ -33,28 +33,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/stone_row"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-            <TextView
-                android:id="@+id/stone_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Stone Stockpile: "
-                android:layout_weight="9"
-                android:textColor="#630000"/>
-            <TextView
-                android:id="@+id/stone_amount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="test amount"
-                android:layout_weight="1"
-                android:textColor="#630000"/>
-
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/iron_row"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -77,6 +55,30 @@
                 />
 
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/stone_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/stone_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stone Stockpile: "
+                android:layout_weight="9"
+                android:textColor="#630000"/>
+            <TextView
+                android:id="@+id/stone_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="test amount"
+                android:layout_weight="1"
+                android:textColor="#630000"/>
+
+        </LinearLayout>
+
+
 
         <LinearLayout
             android:id="@+id/gold_row"

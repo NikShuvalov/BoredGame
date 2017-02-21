@@ -55,7 +55,7 @@ public class DebugActivity extends AppCompatActivity implements NavigationView.O
                 mDrawerLayout.closeDrawers();
                 break;
             case R.id.town_option:
-                Toast.makeText(this, "Coming soon town information", Toast.LENGTH_SHORT).show();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,TownFragment.newInstance()).commit();
                 mDrawerLayout.closeDrawers();
                 break;
         }

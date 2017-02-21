@@ -3,7 +3,7 @@
 
     <!--Building Text-->
     <string name="lumber_mill_name">Lumber mill</string>
-    <string name="lumber_mill_description">A run-of-the-mill lumber mill. The lumber mill helps produce more lumber for your town.</string>
+    <string name="lumber_mill_description">A run-of-the-mill lumber mill. The lumber mill helps produce more lumber for your town. A counter is added for every wood resource card you draft. Remove %s counters to gain 1 wood.</string>
 
     <!--Character Text-->
     <string name="human_class">Human</string>
@@ -16,4 +16,5 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

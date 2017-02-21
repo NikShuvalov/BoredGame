@@ -66,6 +66,9 @@ public class GameStateManager {
                     break;
                 case ResourceCard.WOOD:
                     player.addWood(card.getRank());
+                    if(player.getTownBuildings().get(GameConstants.LUMBER_MILL_ID).getLevel()!=0){
+                        player.getTownBuildings().get(GameConstants.LUMBER_MILL_ID).addCounter();
+                    }
                     break;
                 case ResourceCard.STONE:
                     player.addStone(card.getRank());

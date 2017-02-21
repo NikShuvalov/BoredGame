@@ -1,0 +1,85 @@
+package shuvalov.nikita.boredgame;
+
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
+import shuvalov.nikita.boredgame.Buildings.Building;
+
+/**
+ * Created by NikitaShuvalov on 2/20/17.
+ */
+
+public class TownBuildingRecyclerAdapter extends RecyclerView.Adapter<BuildingViewHolder> {
+    public ArrayList<Building> mBuildings;
+
+    public TownBuildingRecyclerAdapter(ArrayList<Building> buildings){
+        mBuildings = buildings;
+    }
+
+    @Override
+    public BuildingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new BuildingViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_town, null));
+    }
+
+    @Override
+    public void onBindViewHolder(final BuildingViewHolder holder, int position) {
+        final Building building = mBuildings.get(position);
+        holder.bindInformationToView(building);
+        String levelUpPrompt = "Level up building for :\n"+ GameUtils.getCostString(building.getCost());
+        holder.mLevelButt.setText(levelUpPrompt);
+
+        holder.mLevelButt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!GameUtils.payForLevelUp(GameStateManager.getInstance().getPlayer(0),building.getCost())){
+                    Toast.makeText(view.getContext(),"Not enough resources to level up",Toast.LENGTH_LONG).show();
+                }else{
+                    building.levelUp();
+                    notifyItemChanged(holder.getAdapterPosition());
+                }
+            }
+        });
+
+        if(building.getLevel()==0){
+            holder.mAbilityButt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(view.getContext(), "Can't use a level 0 building", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }else{
+            holder.mAbilityButt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(building.useAbility()){
+                        applyEffect(building, view.getContext());
+                        notifyItemChanged(holder.getAdapterPosition());
+                    }else{
+                        Toast.makeText(view.getContext(), "Not enough counters", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        return mBuildings.size();
+    }
+
+    public void applyEffect(Building building, Context context){
+        switch (building.getId()){
+            case GameConstants.LUMBER_MILL_ID:
+                GameStateManager.getInstance().getPlayer(0).addWood(1);
+                Toast.makeText(context, "Added 1 wood", Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
+}
