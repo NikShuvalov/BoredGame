@@ -5,6 +5,17 @@
     <string name="lumber_mill_name">Lumber mill</string>
     <string name="lumber_mill_description">A run-of-the-mill lumber mill. The lumber mill helps produce more lumber for your town. A counter is added for every wood resource card you draft. Remove %s counters to gain 1 wood.</string>
 
+    <string name = "smeltery_name">Smeltery</string>
+    <string name = "smeltery_description">Great for smelting. The smeltery helps produce more iron for your town. A counter is added for every iron resource card you draft. Remove %s counters to gain 1 iron.</string>
+
+    <string name = "mason_name">Mason</string>
+    <string name = "mason_description">The Mason is where villagers go to rock. The Mason helps produce more stone for your town. A counter is added for every stone resource card you draft. Remove %s counters to gain 1 stone.</string>
+
+    <string name = "jeweler_name">Jeweler</string>
+    <string name = "jeweler_description">Not all that glitters is gold, but everything here is gold. The jeweler helps produce more gold for your town. A counter is added for every gold resource card you draft. Remove %s counters to gain 1 gold</string>
+
+    <string name = "mana_well_name">Mana well</string>
+    <string name = "mana_well_description">A magical well. The mana well helps produce more mana for your town. A counter is added for every mana resource card you draft. Remove %s counters to gain 1 mana.</string>
     <!--Character Text-->
     <string name="human_class">Human</string>
     <string name="human_descript">Humans have been around the longest of all of the races that inhabit this world.

@@ -31,7 +31,13 @@ public class TownBuildingRecyclerAdapter extends RecyclerView.Adapter<BuildingVi
     public void onBindViewHolder(final BuildingViewHolder holder, int position) {
         final Building building = mBuildings.get(position);
         holder.bindInformationToView(building);
-        String levelUpPrompt = "Level up building for :\n"+ GameUtils.getCostString(building.getCost());
+        String levelUpPrompt;
+        if(building.getLevel()==0){
+            levelUpPrompt = "Construct building for :\n"+ GameUtils.getCostString(building.getCost());
+        }else{
+            levelUpPrompt = "Level up building for :\n"+ GameUtils.getCostString(building.getCost());
+
+        }
         holder.mLevelButt.setText(levelUpPrompt);
 
         holder.mLevelButt.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +85,22 @@ public class TownBuildingRecyclerAdapter extends RecyclerView.Adapter<BuildingVi
             case GameConstants.LUMBER_MILL_ID:
                 GameStateManager.getInstance().getPlayer(0).addWood(1);
                 Toast.makeText(context, "Added 1 wood", Toast.LENGTH_SHORT).show();
+                break;
+            case GameConstants.SMELTERY_ID:
+                GameStateManager.getInstance().getPlayer(0).addIron(1);
+                Toast.makeText(context, "Added 1 iron", Toast.LENGTH_SHORT).show();
+                break;
+            case GameConstants.MASON_ID:
+                GameStateManager.getInstance().getPlayer(0).addStone(1);
+                Toast.makeText(context, "Added 1 stone", Toast.LENGTH_SHORT).show();
+                break;
+            case GameConstants.JEWELER_ID:
+                GameStateManager.getInstance().getPlayer(0).addGold(1);
+                Toast.makeText(context, "Added 1 gold", Toast.LENGTH_SHORT).show();
+                break;
+            case GameConstants.MANA_WELL_ID:
+                GameStateManager.getInstance().getPlayer(0).addMana(1);
+                Toast.makeText(context, "Added 1 mana", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

@@ -5,7 +5,11 @@ import android.content.Context;
 import java.util.ArrayList;
 
 import shuvalov.nikita.boredgame.Buildings.Building;
+import shuvalov.nikita.boredgame.Buildings.Generic.Jeweler;
 import shuvalov.nikita.boredgame.Buildings.Generic.LumberMill;
+import shuvalov.nikita.boredgame.Buildings.Generic.ManaWell;
+import shuvalov.nikita.boredgame.Buildings.Generic.Mason;
+import shuvalov.nikita.boredgame.Buildings.Generic.Smeltery;
 import shuvalov.nikita.boredgame.Cards.ResourceCard;
 
 /**
@@ -41,6 +45,10 @@ public abstract class BaseCharacterRace {
     private void createBasicBuildings(){
         this.townBuildings = new ArrayList<>();
         townBuildings.add(new LumberMill());
+        townBuildings.add(new Smeltery());
+        townBuildings.add(new Mason());
+        townBuildings.add(new Jeweler());
+        townBuildings.add(new ManaWell());
     }
 
     public ArrayList<Building> getTownBuildings(){
