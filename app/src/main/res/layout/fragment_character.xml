@@ -1,0 +1,125 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="shuvalov.nikita.boredgame.CharacterFragment"
+    android:layout_margin="20dp">
+    <LinearLayout
+        android:id="@+id/rows"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/wood_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/wood_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wood Stockpile: "
+                android:layout_weight="9"
+                android:textColor="#ae7400"/>
+            <TextView
+                android:id="@+id/wood_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="test amount"
+                android:layout_weight="1"
+                android:textColor="#ae7400"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/stone_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/stone_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stone Stockpile: "
+                android:layout_weight="9"
+                android:textColor="#630000"/>
+            <TextView
+                android:id="@+id/stone_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="test amount"
+                android:layout_weight="1"
+                android:textColor="#630000"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/iron_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/iron_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Iron Stockpile: "
+                android:layout_weight="9"
+                android:textColor="#4b4b4b"
+                />
+            <TextView
+                android:id="@+id/iron_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="test amount"
+                android:layout_weight="1"
+                android:textColor="#4b4b4b"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/gold_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/gold_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gold Stockpile: "
+                android:layout_weight="9"
+                android:textColor="#d1ca00"/>
+            <TextView
+                android:id="@+id/gold_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="test amount"
+                android:layout_weight="1"
+                android:textColor="#d1ca00"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mana_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/mana_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mana Stockpile: "
+                android:layout_weight="9"
+                android:textColor="#3c70ff"/>
+            <TextView
+                android:id="@+id/mana_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="test amount"
+                android:layout_weight="1"
+                android:textColor="#3c70ff"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

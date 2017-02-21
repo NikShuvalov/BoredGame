@@ -3,11 +3,17 @@
 
     <!--Building Text-->
     <string name="lumber_mill_name">Lumber mill</string>
-    <string name= "lumber_mill_description">A run-of-the-mill lumber mill. The lumber mill helps produce more lumber for your town.</string>
+    <string name="lumber_mill_description">A run-of-the-mill lumber mill. The lumber mill helps produce more lumber for your town.</string>
 
     <!--Character Text-->
     <string name="human_class">Human</string>
     <string name="human_descript">Humans have been around the longest of all of the races that inhabit this world.
         Though they lack natural strengths, they are highly adaptable;
         It\'s their ingenuity that has afforded them to survive this long amongst such naturally stronger races. </string>
+
+    <string name="navigation_open">Navigation Drawer opened</string>
+    <string name="navigation_closed">Navigation Drawer closed</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

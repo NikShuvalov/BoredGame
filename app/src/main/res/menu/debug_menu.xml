@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/character_option"
+        android:title="Character"
+        />
+    <item
+        android:id="@+id/draft_option"
+        android:title="Draft"/>
+    <item
+        android:id = "@+id/town_option"
+        android:title="Town"/>
+
+</menu>

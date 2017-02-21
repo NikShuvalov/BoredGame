@@ -18,11 +18,14 @@ public class ResourceCard {
     public static final String IRON = "iron";
     public static final String GOLD = "gold";
 
-    private String mType;
+    private String mResource;
     private int mRank;
 
+    public ResourceCard() {
+    }
+
     public ResourceCard(int rank, String type){
-        mType = type;
+        mResource = type;
         mRank = rank;
     }
 
@@ -45,4 +48,19 @@ public class ResourceCard {
         return resourcePack;
     }
 
+    public void setResource(String type) {
+        mResource = type;
+    }
+
+    public void setRank(int rank) {
+        mRank = rank;
+    }
+
+    public String getResource() {
+        return mResource;
+    }
+
+    public int getRank() {
+        return mRank;
+    }
 }

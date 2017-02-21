@@ -2,6 +2,7 @@ package shuvalov.nikita.boredgame.Players;
 
 import android.content.Context;
 
+import shuvalov.nikita.boredgame.GameConstants;
 import shuvalov.nikita.boredgame.R;
 
 /**
@@ -20,12 +21,7 @@ public class Human extends BaseCharacterRace {
 
 
     public Human(String name, int id) {
-        super(name, id, GOLD_START_VALUE, WOOD_START_VALUE, STONE_START_VALUE, IRON_START_VALUE, MANA_START_VALUE);
-    }
-
-    @Override
-    public String getCharacterRace(Context context) {
-        return context.getResources().getString(R.string.human_class);
+        super(name, id, GOLD_START_VALUE, WOOD_START_VALUE, STONE_START_VALUE, IRON_START_VALUE, MANA_START_VALUE, GameConstants.HUMAN_RACE);
     }
 
     @Override
