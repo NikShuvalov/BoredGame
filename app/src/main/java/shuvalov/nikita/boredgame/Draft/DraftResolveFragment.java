@@ -10,8 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import shuvalov.nikita.boredgame.Cards.ActionHandRecyclerAdapter;
+import shuvalov.nikita.boredgame.Game.GameUtils;
 import shuvalov.nikita.boredgame.Game.HandDisplayRecyclerAdapter;
 import shuvalov.nikita.boredgame.Game.GameStateManager;
 import shuvalov.nikita.boredgame.R;
@@ -19,21 +22,27 @@ import shuvalov.nikita.boredgame.R;
 
 public class DraftResolveFragment extends Fragment implements View.OnClickListener {
     private RecyclerView mDraftHandRecycler, mActionHandRecycler;
-    private Button mNoCardsButt;
+    private Button mNoCardsButt, mSelectedCardsButt;
+    private TextView mCurrentResText;
+    DraftResolveListener mDraftResolveListener;
+    ActionHandRecyclerAdapter mActionHandAdapter;
+//    private TextView mAdjustedResText;
 
 
     public DraftResolveFragment() {
     }
 
-    public static DraftResolveFragment newInstance() {
-        return new DraftResolveFragment();
+    public static DraftResolveFragment newInstance(DraftResolveListener draftResolveListener) {
+        DraftResolveFragment fragment = new DraftResolveFragment();
+        fragment.mDraftResolveListener = draftResolveListener;
+        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
+
+        GameStateManager.getInstance().redeemDraftedCards(0);
     }
 
     @Override
@@ -43,22 +52,32 @@ public class DraftResolveFragment extends Fragment implements View.OnClickListen
         mDraftHandRecycler = (RecyclerView)view.findViewById(R.id.draft_hand_recycler);
         mActionHandRecycler = (RecyclerView)view.findViewById(R.id.action_hand_recycler);
         mNoCardsButt = (Button)view.findViewById(R.id.no_cards_butt);
+        mSelectedCardsButt = (Button)view.findViewById(R.id.pick_cards_butt);
+
+        mSelectedCardsButt.setOnClickListener(this);
         mNoCardsButt.setOnClickListener(this);
 
+        mCurrentResText =(TextView)view.findViewById(R.id.current_resource_text);
+//        mAdjustedResText = (TextView)view.findViewById(R.id.adjusted_resource_text);//ToDo: Remove me if more hassle than worth
+
+        setResourceText();
         recyclerLogic();
         return view;
     }
 
+    public void setResourceText(){
+        mCurrentResText.setText(GameUtils.currentResourcesDrafted(GameStateManager.getInstance().getPlayer(0)));
+    }
     public void recyclerLogic(){
         HandDisplayRecyclerAdapter draftHandAdapter = new HandDisplayRecyclerAdapter(GameStateManager.getInstance().getPlayer(0).getDraftedCards());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
         mDraftHandRecycler.setAdapter(draftHandAdapter);
         mDraftHandRecycler.setLayoutManager(linearLayoutManager);
 
-        ActionHandRecyclerAdapter actionHandAdapter  = new ActionHandRecyclerAdapter(GameStateManager.getInstance().getPlayer(0).getActionHand());
+        mActionHandAdapter  = new ActionHandRecyclerAdapter(GameStateManager.getInstance().getPlayer(0).getActionHand());
         LinearLayoutManager actionLayout = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
         mActionHandRecycler.setLayoutManager(actionLayout);
-        mActionHandRecycler.setAdapter(actionHandAdapter);
+        mActionHandRecycler.setAdapter(mActionHandAdapter);
     }
 
 
@@ -66,12 +85,20 @@ public class DraftResolveFragment extends Fragment implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.no_cards_butt:
-                GameStateManager gameStateManager  = GameStateManager.getInstance();
-                gameStateManager.redeemDraftedCards(0);
-                gameStateManager.getPlayer(0).clearDraftedCards();
-                gameStateManager.getDraftedAdapter().notifyDataSetChanged();
+                mDraftResolveListener.draftResolved();
+                break;
+            case R.id.pick_cards_butt:
+                //ToDo: Figure out a better way to make it globally effect players when necessary.
+                //A hot fix just to test single player.
+                //ToDo: Add conditional to check if user has enough mana to play card(s);
+                GameStateManager.getInstance().getPlayer(0).cacheAdjustment(mActionHandAdapter.getSelectedCards());
+                mDraftResolveListener.draftResolved();
                 break;
         }
         //ToDo: Move to next phase from here.
+    }
+
+    public interface DraftResolveListener{
+        void draftResolved();
     }
 }

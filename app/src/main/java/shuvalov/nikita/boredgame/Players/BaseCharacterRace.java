@@ -1,6 +1,7 @@
 package shuvalov.nikita.boredgame.Players;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -12,6 +13,7 @@ import shuvalov.nikita.boredgame.Buildings.Generic.Mason;
 import shuvalov.nikita.boredgame.Buildings.Generic.Smeltery;
 import shuvalov.nikita.boredgame.Cards.ActionCard;
 import shuvalov.nikita.boredgame.Cards.ResourceCard;
+import shuvalov.nikita.boredgame.GameConstants;
 
 /**
  * Created by NikitaShuvalov on 1/25/17.
@@ -22,6 +24,7 @@ public abstract class BaseCharacterRace {
     private String name;
     private int id;
     private int gold, wood, stone, iron, mana;
+    private int draftCacheGold, draftCacheWood,draftCacheStone,draftCacheIron,draftCacheMana;
     private String race;
     private int draftStep;
     private ArrayList<ResourceCard> draftedCards;
@@ -43,6 +46,7 @@ public abstract class BaseCharacterRace {
         this.actionHand = new ArrayList<>();
         createBasicBuildings();
         draftStep=0;
+        draftCacheGold=draftCacheWood=draftCacheStone=draftCacheIron=draftCacheMana=0;
     }
 
     private void createBasicBuildings(){
@@ -127,6 +131,7 @@ public abstract class BaseCharacterRace {
         return true;
     }
 
+    //Adds resources directly to player's stockpile <Start>
     public int addGold(int goldGained){
         gold+=goldGained;
         return gold;
@@ -151,6 +156,72 @@ public abstract class BaseCharacterRace {
         mana +=manaGained;
         return mana;
     }
+    //</End>
+
+    //Adds resource to the draft cache, held to allow to be modified before draft resolution <Start>
+    public int addToDraftCacheGold(int goldDrafted){
+        draftCacheGold+=goldDrafted;
+        return draftCacheGold;
+    }
+    public int addToDraftCacheWood(int woodDrafted){
+        draftCacheWood+=woodDrafted;
+        return draftCacheWood;
+    }
+    public int addToDraftCacheIron(int ironDrafted){
+        draftCacheIron+=ironDrafted;
+        return draftCacheIron;
+    }
+    public int addToDraftCacheStone(int stoneDrafted){
+        draftCacheStone+=stoneDrafted;
+        return draftCacheStone;
+    }
+    public int addToDraftCacheMana(int manaDrafted){
+        draftCacheMana+=manaDrafted;
+        return draftCacheMana;
+    }
+    //</End>
+
+
+    public int getDraftCacheGold() {
+        return draftCacheGold;
+    }
+
+    public int getDraftCacheWood() {
+        return draftCacheWood;
+    }
+
+    public int getDraftCacheStone() {
+        return draftCacheStone;
+    }
+
+    public int getDraftCacheIron() {
+        return draftCacheIron;
+    }
+
+    public int getDraftCacheMana() {
+        return draftCacheMana;
+    }
+
+    public void setDraftCacheGold(int draftCacheGold) {
+        this.draftCacheGold = draftCacheGold;
+    }
+
+    public void setDraftCacheWood(int draftCacheWood) {
+        this.draftCacheWood = draftCacheWood;
+    }
+
+    public void setDraftCacheStone(int draftCacheStone) {
+        this.draftCacheStone = draftCacheStone;
+    }
+
+    public void setDraftCacheIron(int draftCacheIron) {
+        this.draftCacheIron = draftCacheIron;
+    }
+
+    public void setDraftCacheMana(int draftCacheMana) {
+        this.draftCacheMana = draftCacheMana;
+    }
+
     public int getDraftStep(){
         return draftStep;
     }
@@ -189,4 +260,37 @@ public abstract class BaseCharacterRace {
     public String getCharacterRace(){return race;}
     public abstract String getRaceDescription(Context context);
 
+    public void cacheAdjustment(ArrayList<ActionCard> usedCards){
+        Log.d("UsedCards", "cacheAdjustment: "+usedCards.size());
+        for(ActionCard card: usedCards){
+            switch(card.getId()){
+                case GameConstants.RUINED_SHIPMENT_WOOD_ID:
+                    Log.d("Wood", "cacheAdjustment: ");
+                    draftCacheWood= draftCacheWood/2;
+                    break;
+                case GameConstants.RUINED_SHIPMENT_STONE_ID:
+                    draftCacheStone= draftCacheStone/2;
+                    Log.d("Stone", "cacheAdjustment: "+draftCacheStone);
+                    break;
+                case GameConstants.RUINED_SHIPMENT_IRON_ID:
+                    draftCacheIron = draftCacheIron/2;
+                    Log.d("Iron", "cacheAdjustment: "+draftCacheIron);
+                    break;
+                case GameConstants.RUINED_SHIPMENT_GOLD_ID:
+                    draftCacheGold = draftCacheGold/2;
+                    Log.d("Gold", "cacheAdjustment: "+draftCacheGold);
+                    break;
+            }
+        }
+
+    }
+
+    public void resolveCachedAmount(){
+        addWood(draftCacheWood);
+        addIron(draftCacheIron);
+        addStone(draftCacheStone);
+        addGold(draftCacheGold);
+        addMana(draftCacheMana);
+        draftCacheGold=draftCacheWood=draftCacheStone=draftCacheIron=draftCacheMana=0;
+    }
 }

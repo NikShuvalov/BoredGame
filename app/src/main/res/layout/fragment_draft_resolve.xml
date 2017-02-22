@@ -9,24 +9,44 @@
         android:id="@+id/draft_hand_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="4"/>
+        android:layout_weight="5"/>
+
+    <TextView
+        android:id="@+id/current_resource_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Current amount of resources"/>
+
+    <!--<TextView-->
+        <!--android:id="@+id/adjusted_resource_text"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Adjusted amount of resources"/>-->
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/action_hand_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="2"
+        android:layout_weight="3"
         />
     <LinearLayout
         android:id="@+id/button_row"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp">
         <Button
             android:id="@+id/no_cards_butt"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Resolve draft w/o \nplaying cards"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/pick_cards_butt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Resolve draft w/ \nselected cards"
             android:layout_weight="1"/>
 
     </LinearLayout>

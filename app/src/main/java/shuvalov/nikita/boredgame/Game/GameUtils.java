@@ -1,5 +1,8 @@
 package shuvalov.nikita.boredgame.Game;
 
+import java.util.ArrayList;
+
+import shuvalov.nikita.boredgame.Cards.ResourceCard;
 import shuvalov.nikita.boredgame.Players.BaseCharacterRace;
 
 /**
@@ -44,8 +47,36 @@ public class GameUtils {
         player.spendGold(cost[3]);
         player.spendMana(cost[4]);
         return true;
+    }
 
-
-
+    public static String currentResourcesDrafted(BaseCharacterRace player){
+        int wood = player.getDraftCacheWood();
+        int iron = player.getDraftCacheIron();
+        int gold = player.getDraftCacheGold();
+        int stone = player.getDraftCacheStone();
+        int mana = player.getDraftCacheMana();
+//        ArrayList<ResourceCard> draftedCards = player.getDraftedCards();
+//        int wood=0, iron=0, gold=0, stone=0, mana = 0;
+//        for(ResourceCard card: draftedCards){
+//            String resourceType = card.getResource();
+//            switch (resourceType){
+//                case ResourceCard.WOOD:
+//                    wood+=card.getRank();
+//                    break;
+//                case ResourceCard.IRON:
+//                    iron+=card.getRank();
+//                    break;
+//                case ResourceCard.GOLD:
+//                    gold+=card.getRank();
+//                    break;
+//                case ResourceCard.STONE:
+//                    stone+=card.getRank();
+//                    break;
+//                case ResourceCard.MANA:
+//                    mana+=card.getRank();
+//                    break;
+//            }
+//        }
+        return String.format("Drafted: %s wood | %s iron | %s stone | %s gold | %s mana", wood, iron, stone, gold, mana);
     }
 }

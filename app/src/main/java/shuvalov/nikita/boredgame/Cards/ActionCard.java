@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
+import shuvalov.nikita.boredgame.GameConstants;
 import shuvalov.nikita.boredgame.R;
 
 /**
@@ -47,7 +48,7 @@ public class ActionCard {
         String[] cardDescriptions = context.getResources().getStringArray(R.array.action_card_descriptions);
 
         for (int i = 0; i<cardNames.length;i++){
-            actionDeck.add(new ActionCard(cardNames[i], i+2000, cardDescriptions[i]));
+            actionDeck.add(new ActionCard(cardNames[i], 2000+i, cardDescriptions[i]));
         }
         return actionDeck;
     }

@@ -30,7 +30,6 @@ public class DraftFragment extends Fragment implements View.OnClickListener {
         // Required empty public constructor
     }
 
-    // TODO: Rename and change types and number of parameters
     public static DraftFragment newInstance(BeginDraftResolveStepListener listener) {
         DraftFragment fragment = new DraftFragment();
         fragment.mListener = listener;

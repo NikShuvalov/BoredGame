@@ -21,7 +21,6 @@ public class CharacterFragment extends Fragment {
     }
 
 
-    // TODO: Rename and change types and number of parameters
     public static CharacterFragment newInstance() {
         return new CharacterFragment();
     }

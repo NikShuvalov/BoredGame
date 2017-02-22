@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import shuvalov.nikita.boredgame.Buildings.Building;
+import shuvalov.nikita.boredgame.Cards.ActionCard;
 import shuvalov.nikita.boredgame.Cards.ResourceCard;
 import shuvalov.nikita.boredgame.GameConstants;
 import shuvalov.nikita.boredgame.Players.BaseCharacterRace;
@@ -54,13 +55,15 @@ public class GameStateManager {
     }
 
     public void redeemDraftedCards(int playerNumber){
+//        int wood=0, iron = 0, stone=0, gold=0, mana=0;
         BaseCharacterRace player = mPlayerList.get(playerNumber);
         ArrayList<ResourceCard> draftedCards = player.getDraftedCards();
         for(ResourceCard card: draftedCards){
             String resourceType = card.getResource();
             switch (resourceType){
                 case ResourceCard.GOLD:
-                    player.addGold(card.getRank());
+//                    gold+=card.getRank();
+                    player.addToDraftCacheGold(card.getRank());
                     for(Building building: player.getTownBuildings()) {
                         if (building.getId() == GameConstants.JEWELER_ID) {
                             if (building.getLevel() != 0) {
@@ -71,7 +74,8 @@ public class GameStateManager {
                     }
                     break;
                 case ResourceCard.MANA:
-                    player.addMana(card.getRank());
+//                    mana+=card.getRank();
+                    player.addToDraftCacheMana(card.getRank());
                     for(Building building: player.getTownBuildings()) {
                         if (building.getId() == GameConstants.MANA_WELL_ID) {
                             if (building.getLevel() != 0) {
@@ -82,7 +86,8 @@ public class GameStateManager {
                     }
                     break;
                 case ResourceCard.WOOD:
-                    player.addWood(card.getRank());
+//                    wood+=card.getRank();
+                    player.addToDraftCacheWood(card.getRank());
                     for(Building building: player.getTownBuildings()){
                         if(building.getId()==GameConstants.LUMBER_MILL_ID){
                             if(building.getLevel()!=0){
@@ -93,7 +98,8 @@ public class GameStateManager {
                     }
                     break;
                 case ResourceCard.STONE:
-                    player.addStone(card.getRank());
+//                    stone+=card.getRank();
+                    player.addToDraftCacheStone(card.getRank());
                     for(Building building: player.getTownBuildings()) {
                         if (building.getId() == GameConstants.MASON_ID) {
                             if (building.getLevel() != 0) {
@@ -104,7 +110,8 @@ public class GameStateManager {
                     }
                     break;
                 case ResourceCard.IRON:
-                    player.addIron(card.getRank());
+//                    iron+=card.getRank();
+                    player.addToDraftCacheIron(card.getRank());
                     for(Building building: player.getTownBuildings()) {
                         if (building.getId() == GameConstants.SMELTERY_ID) {
                             if (building.getLevel() != 0) {

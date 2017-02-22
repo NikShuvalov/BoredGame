@@ -13,9 +13,10 @@ import android.widget.FrameLayout;
 import shuvalov.nikita.boredgame.Buildings.Town.TownFragment;
 import shuvalov.nikita.boredgame.Draft.DraftFragment;
 import shuvalov.nikita.boredgame.Draft.DraftResolveFragment;
+import shuvalov.nikita.boredgame.Game.GameStateManager;
 import shuvalov.nikita.boredgame.Players.CharacterFragment;
 
-public class DebugActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DraftFragment.BeginDraftResolveStepListener {
+public class DebugActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DraftFragment.BeginDraftResolveStepListener, DraftResolveFragment.DraftResolveListener {
     private Toolbar mToolbar;
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
@@ -69,6 +70,17 @@ public class DebugActivity extends AppCompatActivity implements NavigationView.O
     @Override
     public void beginDraftResolveStep() {
         getSupportActionBar().setTitle("Draft Resolve");
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, DraftResolveFragment.newInstance()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, DraftResolveFragment.newInstance(this)).commit();
+    }
+
+
+    @Override
+    public void draftResolved() {
+        GameStateManager gameStateManager = GameStateManager.getInstance();
+        gameStateManager.getPlayer(0).resolveCachedAmount();
+        gameStateManager.getPlayer(0).clearDraftedCards();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, CharacterFragment.newInstance()).commit();
+        getSupportActionBar().setTitle("Character");
     }
 }
