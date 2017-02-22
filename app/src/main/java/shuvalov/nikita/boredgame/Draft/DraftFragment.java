@@ -1,4 +1,4 @@
-package shuvalov.nikita.boredgame;
+package shuvalov.nikita.boredgame.Draft;
 
 
 import android.os.Bundle;
@@ -10,20 +10,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.google.android.gms.games.Game;
-
 import java.util.ArrayList;
 
 import shuvalov.nikita.boredgame.Cards.ResourceCard;
-import shuvalov.nikita.boredgame.Game.DraftManager;
-import shuvalov.nikita.boredgame.Game.DraftRecyclerAdapter;
 import shuvalov.nikita.boredgame.Game.HandDisplayRecyclerAdapter;
+import shuvalov.nikita.boredgame.GameConstants;
+import shuvalov.nikita.boredgame.Game.GameStateManager;
+import shuvalov.nikita.boredgame.R;
 
 
 public class DraftFragment extends Fragment implements View.OnClickListener {
     private Button mStartDraft, mFinishDraft;
     private RecyclerView mDraftView, mPickedView;
     private DraftRecyclerAdapter mDraftRecyclerAdapter;
+    BeginDraftResolveStepListener mListener;
 
 
     public DraftFragment() {
@@ -31,8 +31,10 @@ public class DraftFragment extends Fragment implements View.OnClickListener {
     }
 
     // TODO: Rename and change types and number of parameters
-    public static DraftFragment newInstance() {
-        return new DraftFragment();
+    public static DraftFragment newInstance(BeginDraftResolveStepListener listener) {
+        DraftFragment fragment = new DraftFragment();
+        fragment.mListener = listener;
+        return fragment;
     }
 
     @Override
@@ -81,11 +83,12 @@ public class DraftFragment extends Fragment implements View.OnClickListener {
                 mDraftRecyclerAdapter.replaceDraftCards(DraftManager.getInstance().getPack(0));
                 break;
             case R.id.redeem_cards_opt:
-                GameStateManager gameStateManager  = GameStateManager.getInstance();
-                gameStateManager.redeemDraftedCards(0);
-                gameStateManager.getPlayer(0).clearDraftedCards();
-                gameStateManager.getDraftedAdapter().notifyDataSetChanged();
+                mListener.beginDraftResolveStep();
                 break;
         }
+    }
+
+    public interface BeginDraftResolveStepListener{
+        public void beginDraftResolveStep();
     }
 }

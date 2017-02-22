@@ -5,18 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
-
-import shuvalov.nikita.boredgame.Game.DraftManager;
-import shuvalov.nikita.boredgame.Game.GameActivity;
-import shuvalov.nikita.boredgame.GameLobby.Lobby;
-import shuvalov.nikita.boredgame.GameLobby.LobbyActivity;
+import shuvalov.nikita.boredgame.Cards.ActionCard;
+import shuvalov.nikita.boredgame.Game.GameStateManager;
 import shuvalov.nikita.boredgame.Players.Human;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -58,9 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                break;
             case R.id.open_lobby_butt:
                 intent = new Intent(MainActivity.this, DebugActivity.class);
-                Human player = new Human("Player", 0);
-                Human computer = new Human ("Computer", 1);
-                GameStateManager.getInstance().setPlayers(player,computer);
+                setUpDebug();
                 startActivity(intent);
                 break;
 //            case R.id.enter_name_butt:
@@ -69,6 +59,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                Toast.makeText(this, "Hello "+userName, Toast.LENGTH_LONG).show();
 //                break;
         }
+    }
+    public void setUpDebug(){
+        Human player = new Human("Player", 0);
+        Human computer = new Human ("Computer", 1);
+
+        player.addActionCardsToHand(ActionCard.createDeck(this));
+        computer.addActionCardsToHand(ActionCard.createDeck(this));
+
+        GameStateManager.getInstance().setPlayers(player,computer);
 
     }
 }

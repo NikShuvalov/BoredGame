@@ -1,4 +1,4 @@
-package shuvalov.nikita.boredgame.Game;
+package shuvalov.nikita.boredgame.Draft;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import shuvalov.nikita.boredgame.Cards.ResourceCard;
-import shuvalov.nikita.boredgame.GameStateManager;
+import shuvalov.nikita.boredgame.Game.GameStateManager;
 import shuvalov.nikita.boredgame.R;
 
 /**

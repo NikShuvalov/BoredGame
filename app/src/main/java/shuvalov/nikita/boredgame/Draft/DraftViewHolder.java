@@ -1,4 +1,4 @@
-package shuvalov.nikita.boredgame.Game;
+package shuvalov.nikita.boredgame.Draft;
 
 import android.graphics.Color;
 import android.support.v7.widget.CardView;

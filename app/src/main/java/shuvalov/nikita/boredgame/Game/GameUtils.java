@@ -1,4 +1,4 @@
-package shuvalov.nikita.boredgame;
+package shuvalov.nikita.boredgame.Game;
 
 import shuvalov.nikita.boredgame.Players.BaseCharacterRace;
 

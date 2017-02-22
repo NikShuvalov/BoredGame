@@ -1,10 +1,8 @@
-package shuvalov.nikita.boredgame.Game;
+package shuvalov.nikita.boredgame.Draft;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import shuvalov.nikita.boredgame.Cards.ResourceCard;
-import shuvalov.nikita.boredgame.Players.BaseCharacterRace;
 
 /**
  * Created by NikitaShuvalov on 2/7/17.

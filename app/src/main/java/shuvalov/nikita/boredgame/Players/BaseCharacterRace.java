@@ -10,6 +10,7 @@ import shuvalov.nikita.boredgame.Buildings.Generic.LumberMill;
 import shuvalov.nikita.boredgame.Buildings.Generic.ManaWell;
 import shuvalov.nikita.boredgame.Buildings.Generic.Mason;
 import shuvalov.nikita.boredgame.Buildings.Generic.Smeltery;
+import shuvalov.nikita.boredgame.Cards.ActionCard;
 import shuvalov.nikita.boredgame.Cards.ResourceCard;
 
 /**
@@ -25,6 +26,7 @@ public abstract class BaseCharacterRace {
     private int draftStep;
     private ArrayList<ResourceCard> draftedCards;
     private ArrayList<Building> townBuildings;
+    private ArrayList<ActionCard> actionHand;
 
     public BaseCharacterRace(){}
 
@@ -38,6 +40,7 @@ public abstract class BaseCharacterRace {
         this.mana = mana;
         this.race = race;
         this.draftedCards = new ArrayList<>();
+        this.actionHand = new ArrayList<>();
         createBasicBuildings();
         draftStep=0;
     }
@@ -50,6 +53,7 @@ public abstract class BaseCharacterRace {
         townBuildings.add(new Jeweler());
         townBuildings.add(new ManaWell());
     }
+
 
     public ArrayList<Building> getTownBuildings(){
         return townBuildings;
@@ -165,6 +169,21 @@ public abstract class BaseCharacterRace {
 
     public void clearDraftedCards(){
         draftedCards.clear();
+    }
+
+    public ArrayList<ActionCard> getActionHand() {
+        return actionHand;
+    }
+    public void addActionCardsToHand(ArrayList<ActionCard> hand){
+        actionHand.addAll(hand);
+    }
+    public void addActionCardToHand(ActionCard actionCard){
+        actionHand.add(actionCard);
+    }
+    //ToDo:Create a method to use/remove a card from user's action hand.
+
+    public String getRace() {
+        return race;
     }
 
     public String getCharacterRace(){return race;}

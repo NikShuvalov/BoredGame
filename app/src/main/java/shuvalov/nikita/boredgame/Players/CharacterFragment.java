@@ -1,4 +1,4 @@
-package shuvalov.nikita.boredgame;
+package shuvalov.nikita.boredgame.Players;
 
 
 import android.os.Bundle;
@@ -8,7 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import shuvalov.nikita.boredgame.Players.BaseCharacterRace;
+import shuvalov.nikita.boredgame.Game.GameStateManager;
+import shuvalov.nikita.boredgame.R;
 
 
 public class CharacterFragment extends Fragment {

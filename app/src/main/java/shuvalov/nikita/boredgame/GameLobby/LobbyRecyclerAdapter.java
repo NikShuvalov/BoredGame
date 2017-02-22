@@ -7,11 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-import shuvalov.nikita.boredgame.FirebaseDatabaseUtils;
 import shuvalov.nikita.boredgame.Game.GameActivity;
 import shuvalov.nikita.boredgame.GameConstants;
 import shuvalov.nikita.boredgame.MainActivity;
@@ -45,7 +43,6 @@ public class LobbyRecyclerAdapter extends RecyclerView.Adapter<LobbyViewHolder> 
                 intent.putExtra(GameConstants.ROOM_KEY_EXTRA, roomKey);
                 intent.putExtra(GameConstants.PLAYER, GameConstants.PLAYER_TWO);
                 String name = holder.mContainer.getContext().getSharedPreferences(MainActivity.SHARED_PREFERENCES, Context.MODE_PRIVATE).getString(MainActivity.USER_NAME_PREF, "The Cock Gobbler");
-                FirebaseDatabaseUtils.getPlayerTwoReference(FirebaseDatabase.getInstance(),roomKey).setValue(new Human(name, 1));
                 holder.mContainer.getContext().startActivity(intent);
             }
         });

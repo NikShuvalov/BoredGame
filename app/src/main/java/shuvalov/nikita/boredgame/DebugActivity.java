@@ -2,7 +2,6 @@ package shuvalov.nikita.boredgame;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,11 +9,14 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
-public class DebugActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+import shuvalov.nikita.boredgame.Buildings.Town.TownFragment;
+import shuvalov.nikita.boredgame.Draft.DraftFragment;
+import shuvalov.nikita.boredgame.Draft.DraftResolveFragment;
+import shuvalov.nikita.boredgame.Players.CharacterFragment;
+
+public class DebugActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DraftFragment.BeginDraftResolveStepListener {
     private Toolbar mToolbar;
-    private FrameLayout mFragmentContainer;
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
 
@@ -29,7 +31,6 @@ public class DebugActivity extends AppCompatActivity implements NavigationView.O
 
     public void findViews(){
         mToolbar = (Toolbar)findViewById(R.id.my_toolbar);
-        mFragmentContainer = (FrameLayout)findViewById(R.id.fragment_container);
         setSupportActionBar(mToolbar);
 
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
@@ -47,18 +48,27 @@ public class DebugActivity extends AppCompatActivity implements NavigationView.O
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.character_option:
+                getSupportActionBar().setTitle("Character");
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, CharacterFragment.newInstance()).commit();
                 mDrawerLayout.closeDrawers();
                 break;
             case R.id.draft_option:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,DraftFragment.newInstance()).commit();
+                getSupportActionBar().setTitle("Draft");
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,DraftFragment.newInstance(this)).commit();
                 mDrawerLayout.closeDrawers();
                 break;
             case R.id.town_option:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,TownFragment.newInstance()).commit();
+                getSupportActionBar().setTitle("Town");
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, TownFragment.newInstance()).commit();
                 mDrawerLayout.closeDrawers();
                 break;
         }
         return false;
+    }
+
+    @Override
+    public void beginDraftResolveStep() {
+        getSupportActionBar().setTitle("Draft Resolve");
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, DraftResolveFragment.newInstance()).commit();
     }
 }

@@ -1,4 +1,4 @@
-package shuvalov.nikita.boredgame;
+package shuvalov.nikita.boredgame.Buildings.Town;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +10,10 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import shuvalov.nikita.boredgame.Buildings.Building;
+import shuvalov.nikita.boredgame.GameConstants;
+import shuvalov.nikita.boredgame.Game.GameStateManager;
+import shuvalov.nikita.boredgame.Game.GameUtils;
+import shuvalov.nikita.boredgame.R;
 
 /**
  * Created by NikitaShuvalov on 2/20/17.

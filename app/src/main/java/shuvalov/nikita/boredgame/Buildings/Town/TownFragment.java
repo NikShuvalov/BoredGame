@@ -1,4 +1,4 @@
-package shuvalov.nikita.boredgame;
+package shuvalov.nikita.boredgame.Buildings.Town;
 
 
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import shuvalov.nikita.boredgame.Game.GameStateManager;
+import shuvalov.nikita.boredgame.R;
 
 
 public class TownFragment extends Fragment {

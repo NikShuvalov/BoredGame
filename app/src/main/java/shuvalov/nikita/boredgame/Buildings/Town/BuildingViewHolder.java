@@ -1,4 +1,4 @@
-package shuvalov.nikita.boredgame;
+package shuvalov.nikita.boredgame.Buildings.Town;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import shuvalov.nikita.boredgame.Buildings.Building;
+import shuvalov.nikita.boredgame.R;
 
 /**
  * Created by NikitaShuvalov on 2/20/17.

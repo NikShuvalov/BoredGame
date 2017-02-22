@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+              android:orientation="vertical"
+             tools:context="shuvalov.nikita.boredgame.Draft.DraftResolveFragment">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/draft_hand_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="4"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/action_hand_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        />
+    <LinearLayout
+        android:id="@+id/button_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/no_cards_butt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Resolve draft w/o \nplaying cards"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

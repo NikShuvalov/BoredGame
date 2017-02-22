@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import shuvalov.nikita.boredgame.Cards.ResourceCard;
+import shuvalov.nikita.boredgame.Draft.DraftViewHolder;
 import shuvalov.nikita.boredgame.R;
 
 /**

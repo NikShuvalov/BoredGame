@@ -4,7 +4,6 @@ import android.content.Context;
 
 import shuvalov.nikita.boredgame.Buildings.Building;
 import shuvalov.nikita.boredgame.GameConstants;
-import shuvalov.nikita.boredgame.GameStateManager;
 import shuvalov.nikita.boredgame.R;
 
 /**
