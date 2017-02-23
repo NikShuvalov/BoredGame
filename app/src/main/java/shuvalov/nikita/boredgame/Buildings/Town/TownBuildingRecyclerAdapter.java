@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.android.gms.games.Game;
+
 import java.util.ArrayList;
 
 import shuvalov.nikita.boredgame.Buildings.Building;
@@ -15,6 +17,7 @@ import shuvalov.nikita.boredgame.Game.GameStateManager;
 import shuvalov.nikita.boredgame.Game.GameUtils;
 import shuvalov.nikita.boredgame.MainActivity;
 import shuvalov.nikita.boredgame.R;
+import shuvalov.nikita.boredgame.Units.Mercenary;
 
 /**
  * Created by NikitaShuvalov on 2/20/17.
@@ -48,7 +51,7 @@ public class TownBuildingRecyclerAdapter extends RecyclerView.Adapter<BuildingVi
         holder.mLevelButt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!GameUtils.payForLevelUp(GameStateManager.getInstance().getPlayer(0),building.getCost())){
+                if(!GameUtils.canPayCost(GameStateManager.getInstance().getPlayer(0),building.getCost())){
                     Toast.makeText(view.getContext(),"Not enough resources to level up",Toast.LENGTH_LONG).show();
                 }else{
                     GameStateManager.getInstance().setResourceText(GameUtils.currentResourceStockpile(GameStateManager.getInstance().getPlayer(0)));
@@ -69,11 +72,11 @@ public class TownBuildingRecyclerAdapter extends RecyclerView.Adapter<BuildingVi
             holder.mAbilityButt.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(building.useAbility()){
+                    if(building.useAbility(GameStateManager.getInstance().getPlayer(0))){
                         applyEffect(building, view.getContext());
                         notifyItemChanged(holder.getAdapterPosition());
                     }else{
-                        Toast.makeText(view.getContext(), "Not enough counters", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(view.getContext(), "Not enough", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -107,6 +110,10 @@ public class TownBuildingRecyclerAdapter extends RecyclerView.Adapter<BuildingVi
             case GameConstants.MANA_WELL_ID:
                 GameStateManager.getInstance().getPlayer(0).addMana(1);
                 Toast.makeText(context, "Added 1 mana", Toast.LENGTH_SHORT).show();
+                break;
+            case GameConstants.MERCGUILD_ID:
+                GameStateManager.getInstance().getPlayer(0).addUnitToArmy(new Mercenary());
+                Toast.makeText(context, "Hired a mercenary", Toast.LENGTH_SHORT).show();
                 break;
         }
         GameStateManager.getInstance().setResourceText(GameUtils.currentResourceStockpile(GameStateManager.getInstance().getPlayer(0)));

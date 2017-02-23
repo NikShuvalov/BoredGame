@@ -10,10 +10,12 @@ import shuvalov.nikita.boredgame.Buildings.Generic.Jeweler;
 import shuvalov.nikita.boredgame.Buildings.Generic.LumberMill;
 import shuvalov.nikita.boredgame.Buildings.Generic.ManaWell;
 import shuvalov.nikita.boredgame.Buildings.Generic.Mason;
+import shuvalov.nikita.boredgame.Buildings.Generic.MercGuild;
 import shuvalov.nikita.boredgame.Buildings.Generic.Smeltery;
 import shuvalov.nikita.boredgame.Cards.ActionCard;
 import shuvalov.nikita.boredgame.Cards.ResourceCard;
 import shuvalov.nikita.boredgame.GameConstants;
+import shuvalov.nikita.boredgame.Units.Army;
 
 /**
  * Created by NikitaShuvalov on 1/25/17.
@@ -30,6 +32,7 @@ public abstract class BaseCharacterRace {
     private ArrayList<ResourceCard> draftedCards;
     private ArrayList<Building> townBuildings;
     private ArrayList<ActionCard> actionHand;
+    private ArrayList<Army> playerArmy;
 
     public BaseCharacterRace(){}
 
@@ -44,11 +47,13 @@ public abstract class BaseCharacterRace {
         this.race = race;
         this.draftedCards = new ArrayList<>();
         this.actionHand = new ArrayList<>();
+        this.playerArmy = new ArrayList<>();
         createBasicBuildings();
         draftStep=0;
         draftCacheGold=draftCacheWood=draftCacheStone=draftCacheIron=draftCacheMana=0f;
     }
 
+    //ToDo: Move basic buildings adding elsewhere
     private void createBasicBuildings(){
         this.townBuildings = new ArrayList<>();
         townBuildings.add(new LumberMill());
@@ -56,6 +61,7 @@ public abstract class BaseCharacterRace {
         townBuildings.add(new Mason());
         townBuildings.add(new Jeweler());
         townBuildings.add(new ManaWell());
+        townBuildings.add(new MercGuild());
     }
 
 
@@ -282,7 +288,6 @@ public abstract class BaseCharacterRace {
                     break;
             }
         }
-
     }
 
     public void resolveCachedAmount(){
@@ -292,5 +297,14 @@ public abstract class BaseCharacterRace {
         addGold((int)draftCacheGold);
         addMana((int)draftCacheMana);
         draftCacheGold=draftCacheWood=draftCacheStone=draftCacheIron=draftCacheMana=0f;
+    }
+
+    public ArrayList<Army> getPlayerArmy() {
+        return playerArmy;
+    }
+
+    public ArrayList<Army> addUnitToArmy(Army unit){
+        playerArmy.add(unit);
+        return playerArmy;
     }
 }

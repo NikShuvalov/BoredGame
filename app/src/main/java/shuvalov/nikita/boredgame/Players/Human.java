@@ -12,11 +12,11 @@ import shuvalov.nikita.boredgame.R;
 public class Human extends BaseCharacterRace {
 
     //Adjust starting values accordingly.
-    public static final int GOLD_START_VALUE =  2;
-    public static final int WOOD_START_VALUE =  2;
-    public static final int STONE_START_VALUE =  2;
-    public static final int IRON_START_VALUE =  2;
-    public static final int MANA_START_VALUE =  0;
+    public static final int GOLD_START_VALUE =  200;
+    public static final int WOOD_START_VALUE =  200;
+    public static final int STONE_START_VALUE =  200;
+    public static final int IRON_START_VALUE =  200;
+    public static final int MANA_START_VALUE =  100;
 
 
 

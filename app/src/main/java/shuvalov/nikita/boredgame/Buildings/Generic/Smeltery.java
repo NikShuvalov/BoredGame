@@ -4,6 +4,7 @@ import android.content.Context;
 
 import shuvalov.nikita.boredgame.Buildings.Building;
 import shuvalov.nikita.boredgame.GameConstants;
+import shuvalov.nikita.boredgame.Players.BaseCharacterRace;
 import shuvalov.nikita.boredgame.R;
 
 /**
@@ -30,7 +31,7 @@ public class Smeltery extends Building {
     }
 
     @Override
-    public boolean useAbility() {
+    public boolean useAbility(BaseCharacterRace player) {
         if(getCounters()<(5-getLevel())){
             return false;
         }

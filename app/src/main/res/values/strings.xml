@@ -17,6 +17,9 @@
     <string name="mana_well_name">Mana well</string>
     <string name="mana_well_description">A magical well. The mana well helps produce more mana for your town. A counter is added for every mana resource card you draft. Remove %s counters to gain 1 mana.</string>
 
+    <string name="mercenary_guild_name">Mercenary Guild</string>
+    <string name="mercenary_guild_description">A vile breeding ground for despicable sellswords looking to make a quick buck, a perfect place to hire some fodder for your army. Hire a mercenary for 1 iron and 4 gold.</string>
+
     <!--Character Text-->
     <string name="human_class">Human</string>
     <string name="human_descript">Humans have been around the longest of all of the races that inhabit this world.

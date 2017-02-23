@@ -2,6 +2,8 @@ package shuvalov.nikita.boredgame.Buildings;
 
 import android.content.Context;
 
+import shuvalov.nikita.boredgame.Players.BaseCharacterRace;
+
 /**
  * Created by NikitaShuvalov on 1/25/17.
  */
@@ -36,7 +38,7 @@ public abstract class Building {
 
     public abstract String getName(Context context);
     public abstract String getDescription(Context context);
-    public abstract boolean useAbility();
+    public abstract boolean useAbility(BaseCharacterRace player);
     public abstract int[] getCost();
 
 

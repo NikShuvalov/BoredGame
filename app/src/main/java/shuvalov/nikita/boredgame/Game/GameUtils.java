@@ -37,7 +37,7 @@ public class GameUtils {
         return costString.toString();
     }
 
-    public static boolean payForLevelUp(BaseCharacterRace player, int[] cost){
+    public static boolean canPayCost(BaseCharacterRace player, int[] cost){
         if(player.getWood()< cost[0] || player.getIron()<cost[1] || player.getStone() < cost[2] || player.getGold()< cost[3] || player.getMana()<cost[4]){
             return false;
         }
@@ -88,4 +88,5 @@ public class GameUtils {
         int mana = player.getMana();
         return String.format("%s wood | %s iron | %s stone | %s gold | %s mana", wood, iron, stone, gold, mana);
     }
+
 }

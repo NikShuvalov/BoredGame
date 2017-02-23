@@ -68,6 +68,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         computer.addActionCardsToHand(ActionCard.createDeck(this));
 
         GameStateManager.getInstance().setPlayers(player,computer);
-
     }
 }
