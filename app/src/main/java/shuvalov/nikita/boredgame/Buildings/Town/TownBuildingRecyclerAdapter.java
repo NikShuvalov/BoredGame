@@ -13,6 +13,7 @@ import shuvalov.nikita.boredgame.Buildings.Building;
 import shuvalov.nikita.boredgame.GameConstants;
 import shuvalov.nikita.boredgame.Game.GameStateManager;
 import shuvalov.nikita.boredgame.Game.GameUtils;
+import shuvalov.nikita.boredgame.MainActivity;
 import shuvalov.nikita.boredgame.R;
 
 /**
@@ -50,6 +51,7 @@ public class TownBuildingRecyclerAdapter extends RecyclerView.Adapter<BuildingVi
                 if(!GameUtils.payForLevelUp(GameStateManager.getInstance().getPlayer(0),building.getCost())){
                     Toast.makeText(view.getContext(),"Not enough resources to level up",Toast.LENGTH_LONG).show();
                 }else{
+                    GameStateManager.getInstance().setResourceText(GameUtils.currentResourceStockpile(GameStateManager.getInstance().getPlayer(0)));
                     building.levelUp();
                     notifyItemChanged(holder.getAdapterPosition());
                 }
@@ -107,5 +109,6 @@ public class TownBuildingRecyclerAdapter extends RecyclerView.Adapter<BuildingVi
                 Toast.makeText(context, "Added 1 mana", Toast.LENGTH_SHORT).show();
                 break;
         }
+        GameStateManager.getInstance().setResourceText(GameUtils.currentResourceStockpile(GameStateManager.getInstance().getPlayer(0)));
     }
 }

@@ -1,5 +1,7 @@
 package shuvalov.nikita.boredgame.Game;
 
+import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -16,6 +18,7 @@ import shuvalov.nikita.boredgame.Players.BaseCharacterRace;
 public class GameStateManager {
     private ArrayList<BaseCharacterRace> mPlayerList;
     private HandDisplayRecyclerAdapter mHandDisplayAdapter;
+    private TextView mToolbarText;
 
     private static GameStateManager sGameStateManager;
 
@@ -28,6 +31,14 @@ public class GameStateManager {
             sGameStateManager = new GameStateManager();
         }
         return sGameStateManager;
+    }
+
+    public void assignResourceText(TextView resourceTextView){
+        mToolbarText = resourceTextView;
+    }
+
+    public void setResourceText(String resourceText){
+        mToolbarText.setText(resourceText);
     }
 
     public void setPlayers(BaseCharacterRace... players){

@@ -31,7 +31,8 @@ public class ActionViewHolder extends RecyclerView.ViewHolder {
 
     public void bindDataToViews(ActionCard actionCard){
         mNameText.setText(actionCard.getName());
-//        mManaText.setText(actionCard.getManaCost());
+        String manaCostText = actionCard.getManaCost()+"x mana";
+        mManaText.setText(manaCostText);
         mDescriptionText.setText(actionCard.getDescription());
     }
 

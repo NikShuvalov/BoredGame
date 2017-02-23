@@ -42,4 +42,6 @@ public class TownFragment extends Fragment {
         return view;
     }
 
+
+
 }

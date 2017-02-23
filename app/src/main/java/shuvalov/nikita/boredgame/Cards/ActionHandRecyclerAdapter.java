@@ -54,14 +54,7 @@ public class ActionHandRecyclerAdapter extends RecyclerView.Adapter<ActionViewHo
         return mActionHand.size();
     }
 
-    public ArrayList<ActionCard> getSelectedCards(){
-        ArrayList<ActionCard> returnedCards = new ArrayList<>();
-        for(ActionCard card: mSelectedCards){
-            GameStateManager.getInstance().getPlayer(0).getActionHand().remove(card);
-            mActionHand.remove(card);
-            returnedCards.add(card);
-        }
-        mSelectedCards.clear();
-        return returnedCards;
+    public ArrayList<ActionCard> getSelectedCards() {
+        return mSelectedCards;
     }
 }

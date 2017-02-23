@@ -40,8 +40,12 @@
         <item>Play during the draft resolve step. All players receive only 50% (Rounded down) of the iron they drafted this draft step.</item>
         <item>Play during the draft resolve step. All players receive only 50% (Rounded down) of the stone they drafted this draft step.</item>
         <item>Play during the draft resolve step. All players receive only 50% (Rounded down) of the gold they drafted this draft step.</item>
-
-
     </string-array>
+    <integer-array name="action_card_mana_costs">
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+    </integer-array>
 
 </resources>

@@ -50,11 +50,11 @@ public class GameUtils {
     }
 
     public static String currentResourcesDrafted(BaseCharacterRace player){
-        int wood = player.getDraftCacheWood();
-        int iron = player.getDraftCacheIron();
-        int gold = player.getDraftCacheGold();
-        int stone = player.getDraftCacheStone();
-        int mana = player.getDraftCacheMana();
+        int wood = (int)player.getDraftCacheWood();
+        int iron = (int)player.getDraftCacheIron();
+        int gold = (int)player.getDraftCacheGold();
+        int stone = (int)player.getDraftCacheStone();
+        int mana = (int)player.getDraftCacheMana();
 //        ArrayList<ResourceCard> draftedCards = player.getDraftedCards();
 //        int wood=0, iron=0, gold=0, stone=0, mana = 0;
 //        for(ResourceCard card: draftedCards){
@@ -78,5 +78,14 @@ public class GameUtils {
 //            }
 //        }
         return String.format("Drafted: %s wood | %s iron | %s stone | %s gold | %s mana", wood, iron, stone, gold, mana);
+    }
+
+    public static String currentResourceStockpile(BaseCharacterRace player){
+        int wood = player.getWood();
+        int iron = player.getIron();
+        int stone = player.getStone();
+        int gold = player.getGold();
+        int mana = player.getMana();
+        return String.format("%s wood | %s iron | %s stone | %s gold | %s mana", wood, iron, stone, gold, mana);
     }
 }

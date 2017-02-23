@@ -24,7 +24,7 @@ public abstract class BaseCharacterRace {
     private String name;
     private int id;
     private int gold, wood, stone, iron, mana;
-    private int draftCacheGold, draftCacheWood,draftCacheStone,draftCacheIron,draftCacheMana;
+    private float draftCacheGold, draftCacheWood,draftCacheStone,draftCacheIron,draftCacheMana;
     private String race;
     private int draftStep;
     private ArrayList<ResourceCard> draftedCards;
@@ -46,7 +46,7 @@ public abstract class BaseCharacterRace {
         this.actionHand = new ArrayList<>();
         createBasicBuildings();
         draftStep=0;
-        draftCacheGold=draftCacheWood=draftCacheStone=draftCacheIron=draftCacheMana=0;
+        draftCacheGold=draftCacheWood=draftCacheStone=draftCacheIron=draftCacheMana=0f;
     }
 
     private void createBasicBuildings(){
@@ -159,66 +159,66 @@ public abstract class BaseCharacterRace {
     //</End>
 
     //Adds resource to the draft cache, held to allow to be modified before draft resolution <Start>
-    public int addToDraftCacheGold(int goldDrafted){
+    public float addToDraftCacheGold(int goldDrafted){
         draftCacheGold+=goldDrafted;
         return draftCacheGold;
     }
-    public int addToDraftCacheWood(int woodDrafted){
+    public float addToDraftCacheWood(int woodDrafted){
         draftCacheWood+=woodDrafted;
         return draftCacheWood;
     }
-    public int addToDraftCacheIron(int ironDrafted){
+    public float addToDraftCacheIron(int ironDrafted){
         draftCacheIron+=ironDrafted;
         return draftCacheIron;
     }
-    public int addToDraftCacheStone(int stoneDrafted){
+    public float addToDraftCacheStone(int stoneDrafted){
         draftCacheStone+=stoneDrafted;
         return draftCacheStone;
     }
-    public int addToDraftCacheMana(int manaDrafted){
+    public float addToDraftCacheMana(int manaDrafted){
         draftCacheMana+=manaDrafted;
         return draftCacheMana;
     }
     //</End>
 
 
-    public int getDraftCacheGold() {
+    public float getDraftCacheGold() {
         return draftCacheGold;
     }
 
-    public int getDraftCacheWood() {
+    public float getDraftCacheWood() {
         return draftCacheWood;
     }
 
-    public int getDraftCacheStone() {
+    public float getDraftCacheStone() {
         return draftCacheStone;
     }
 
-    public int getDraftCacheIron() {
+    public float getDraftCacheIron() {
         return draftCacheIron;
     }
 
-    public int getDraftCacheMana() {
+    public float getDraftCacheMana() {
         return draftCacheMana;
     }
 
-    public void setDraftCacheGold(int draftCacheGold) {
+    public void setDraftCacheGold(float draftCacheGold) {
         this.draftCacheGold = draftCacheGold;
     }
 
-    public void setDraftCacheWood(int draftCacheWood) {
+    public void setDraftCacheWood(float draftCacheWood) {
         this.draftCacheWood = draftCacheWood;
     }
 
-    public void setDraftCacheStone(int draftCacheStone) {
+    public void setDraftCacheStone(float draftCacheStone) {
         this.draftCacheStone = draftCacheStone;
     }
 
-    public void setDraftCacheIron(int draftCacheIron) {
+    public void setDraftCacheIron(float draftCacheIron) {
         this.draftCacheIron = draftCacheIron;
     }
 
-    public void setDraftCacheMana(int draftCacheMana) {
+    public void setDraftCacheMana(float draftCacheMana) {
         this.draftCacheMana = draftCacheMana;
     }
 
@@ -286,11 +286,11 @@ public abstract class BaseCharacterRace {
     }
 
     public void resolveCachedAmount(){
-        addWood(draftCacheWood);
-        addIron(draftCacheIron);
-        addStone(draftCacheStone);
-        addGold(draftCacheGold);
-        addMana(draftCacheMana);
-        draftCacheGold=draftCacheWood=draftCacheStone=draftCacheIron=draftCacheMana=0;
+        addWood((int)draftCacheWood);
+        addIron((int)draftCacheIron);
+        addStone((int)draftCacheStone);
+        addGold((int)draftCacheGold);
+        addMana((int)draftCacheMana);
+        draftCacheGold=draftCacheWood=draftCacheStone=draftCacheIron=draftCacheMana=0f;
     }
 }

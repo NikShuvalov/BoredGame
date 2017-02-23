@@ -15,10 +15,11 @@ public class ActionCard {
     private String mName, mDescription;
     private int mId, mManaCost;
 
-    public ActionCard(String name, int id, String description){
+    public ActionCard(String name, int id, String description, int manaCost){
         mName = name;
         mId = id;
         mDescription = description;
+        mManaCost = manaCost;
     }
 
     public String getName() {
@@ -46,9 +47,10 @@ public class ActionCard {
         ArrayList<ActionCard> actionDeck = new ArrayList<>();
         String[] cardNames = context.getResources().getStringArray(R.array.action_card_names);
         String[] cardDescriptions = context.getResources().getStringArray(R.array.action_card_descriptions);
+        int[] cardManaCosts = context.getResources().getIntArray(R.array.action_card_mana_costs);
 
         for (int i = 0; i<cardNames.length;i++){
-            actionDeck.add(new ActionCard(cardNames[i], 2000+i, cardDescriptions[i]));
+            actionDeck.add(new ActionCard(cardNames[i], 2000+i, cardDescriptions[i], cardManaCosts[i]));
         }
         return actionDeck;
     }

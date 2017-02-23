@@ -13,6 +13,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
+import shuvalov.nikita.boredgame.Cards.ActionCard;
 import shuvalov.nikita.boredgame.Cards.ActionHandRecyclerAdapter;
 import shuvalov.nikita.boredgame.Game.GameUtils;
 import shuvalov.nikita.boredgame.Game.HandDisplayRecyclerAdapter;
@@ -90,13 +93,35 @@ public class DraftResolveFragment extends Fragment implements View.OnClickListen
             case R.id.pick_cards_butt:
                 //ToDo: Figure out a better way to make it globally effect players when necessary.
                 //A hot fix just to test single player.
-                //ToDo: Add conditional to check if user has enough mana to play card(s);
-                GameStateManager.getInstance().getPlayer(0).cacheAdjustment(mActionHandAdapter.getSelectedCards());
-                mDraftResolveListener.draftResolved();
+
+                ArrayList<ActionCard> selectedCards = mActionHandAdapter.getSelectedCards();
+                if(selectedCards==null || selectedCards.size()==0){
+                    Toast.makeText(getContext(), "No cards selected", Toast.LENGTH_SHORT).show();
+                }else {
+                    int totalManaCost=0;
+                    for(ActionCard card:selectedCards){
+                        totalManaCost+=card.getManaCost();
+                    }
+                    GameStateManager gameStateManager = GameStateManager.getInstance();
+                    int playerMana = gameStateManager.getPlayer(0).getMana();
+                    if(playerMana<totalManaCost){
+                        Toast.makeText(getContext(), "Not enough mana to play selected cards", Toast.LENGTH_SHORT).show();
+                    }else{
+                        gameStateManager.getPlayer(0).spendMana(totalManaCost);
+                        gameStateManager.getPlayer(0).cacheAdjustment(selectedCards);
+                        for(ActionCard card: selectedCards){
+                            gameStateManager.getPlayer(0).getActionHand().remove(card);
+                        }
+
+                        mDraftResolveListener.draftResolved();
+                    }
+
+                }
+
                 break;
         }
-        //ToDo: Move to next phase from here.
     }
+
 
     public interface DraftResolveListener{
         void draftResolved();
