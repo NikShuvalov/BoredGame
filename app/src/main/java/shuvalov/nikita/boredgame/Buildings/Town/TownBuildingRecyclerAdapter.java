@@ -18,6 +18,7 @@ import shuvalov.nikita.boredgame.Game.GameUtils;
 import shuvalov.nikita.boredgame.MainActivity;
 import shuvalov.nikita.boredgame.R;
 import shuvalov.nikita.boredgame.Units.Mercenary;
+import shuvalov.nikita.boredgame.Units.WoodGolem;
 
 /**
  * Created by NikitaShuvalov on 2/20/17.
@@ -114,6 +115,10 @@ public class TownBuildingRecyclerAdapter extends RecyclerView.Adapter<BuildingVi
             case GameConstants.MERCGUILD_ID:
                 GameStateManager.getInstance().getPlayer(0).addUnitToArmy(new Mercenary());
                 Toast.makeText(context, "Hired a mercenary", Toast.LENGTH_SHORT).show();
+                break;
+            case GameConstants.SUMM_GUILD_ID:
+                GameStateManager.getInstance().getPlayer(0).addUnitToArmy(new WoodGolem());
+                Toast.makeText(context,"Enlisted a Wood Golem", Toast.LENGTH_SHORT).show();
                 break;
         }
         GameStateManager.getInstance().setResourceText(GameUtils.currentResourceStockpile(GameStateManager.getInstance().getPlayer(0)));

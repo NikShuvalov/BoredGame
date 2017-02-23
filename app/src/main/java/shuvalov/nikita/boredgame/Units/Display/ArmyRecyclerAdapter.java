@@ -1,4 +1,4 @@
-package shuvalov.nikita.boredgame.Units;
+package shuvalov.nikita.boredgame.Units.Display;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import shuvalov.nikita.boredgame.R;
+import shuvalov.nikita.boredgame.Units.Army;
 
 /**
  * Created by NikitaShuvalov on 2/23/17.

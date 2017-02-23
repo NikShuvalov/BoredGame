@@ -4,7 +4,7 @@ package shuvalov.nikita.boredgame.Units;
  * Created by NikitaShuvalov on 2/23/17.
  */
 
-public class Army {
+public abstract class Army {
     private int mHp, mMaxHp, mDefense, mAttack, mIdType;
     private boolean mHasArmor, mHasWeapon; //ToDo: Should probably have different types of weapons, but keeping it simple for now.
     private String mName; //ToDo: Change to a more appropriately named string. This represents the type of unit.

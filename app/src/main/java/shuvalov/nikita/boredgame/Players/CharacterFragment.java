@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import shuvalov.nikita.boredgame.Game.GameStateManager;
 import shuvalov.nikita.boredgame.R;
-import shuvalov.nikita.boredgame.Units.ArmyRecyclerAdapter;
+import shuvalov.nikita.boredgame.Units.Display.ArmyRecyclerAdapter;
 
 
 public class CharacterFragment extends Fragment {

@@ -12,6 +12,7 @@ import shuvalov.nikita.boredgame.Buildings.Generic.ManaWell;
 import shuvalov.nikita.boredgame.Buildings.Generic.Mason;
 import shuvalov.nikita.boredgame.Buildings.Generic.MercGuild;
 import shuvalov.nikita.boredgame.Buildings.Generic.Smeltery;
+import shuvalov.nikita.boredgame.Buildings.Generic.SummonersGuild;
 import shuvalov.nikita.boredgame.Cards.ActionCard;
 import shuvalov.nikita.boredgame.Cards.ResourceCard;
 import shuvalov.nikita.boredgame.GameConstants;
@@ -62,6 +63,7 @@ public abstract class BaseCharacterRace {
         townBuildings.add(new Jeweler());
         townBuildings.add(new ManaWell());
         townBuildings.add(new MercGuild());
+        townBuildings.add(new SummonersGuild());
     }
 
 

@@ -24,6 +24,7 @@ public class GameConstants {
     public static final int MANA_WELL_ID = 1004; //Mana generator building id;
 
     public static final int MERCGUILD_ID = 1010;
+    public static final int SUMM_GUILD_ID= 1011;
 
     //Action Card Values
     public static final int RUINED_SHIPMENT_WOOD_ID = 2000;
@@ -36,6 +37,7 @@ public class GameConstants {
     //Idea: If I need to categorize units in some way, do it by the Ids. Like undead could be 3050-3099 and mobs can be 3100-3200, something like that.
     //Unit Ids
     public static final int MERCENARY_ID = 3000;
+    public static final int WOOD_GOLEM_ID = 3001;
 
 
 
