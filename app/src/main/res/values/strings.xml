@@ -20,8 +20,8 @@
     <string name="mercenary_guild_name">Mercenary Guild</string>
     <string name="mercenary_guild_description">A vile breeding ground for despicable sellswords looking to make a quick buck, a perfect place to hire some fodder for your army. Hire a mercenary for 1 iron and 4 gold.</string>
 
-    <string name ="summoners_guild_name">Summoners\' Guild</string>
-    <string name ="summoners_guild_description">A congregation of powerful magic users. You can enlist their aid to summon golems at a cost. Summon a wood golem for 1 wood, 2 gold, and 3 mana</string>
+    <string name="summoners_guild_name">Summoners\' Guild</string>
+    <string name="summoners_guild_description">A congregation of powerful magic users. You can enlist their aid to summon golems at a cost. Summon a wood golem for 1 wood, 2 gold, and 3 mana</string>
 
     <!--Character Text-->
     <string name="human_class">Human</string>
@@ -53,5 +53,8 @@
         <item>1</item>
         <item>1</item>
     </integer-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -10,6 +10,7 @@ import shuvalov.nikita.boredgame.Cards.ActionCard;
 import shuvalov.nikita.boredgame.Cards.ResourceCard;
 import shuvalov.nikita.boredgame.GameConstants;
 import shuvalov.nikita.boredgame.Players.BaseCharacterRace;
+import shuvalov.nikita.boredgame.Units.Army;
 
 /**
  * Created by NikitaShuvalov on 2/19/17.
@@ -18,12 +19,15 @@ import shuvalov.nikita.boredgame.Players.BaseCharacterRace;
 public class GameStateManager {
     private ArrayList<BaseCharacterRace> mPlayerList;
     private HandDisplayRecyclerAdapter mHandDisplayAdapter;
-    private TextView mToolbarText;
+    private TextView mToolbarText; //FixMe: Remove this once I have a better way to make a HUD.
+    private Army[] mBattleState;
+
 
     private static GameStateManager sGameStateManager;
 
     private GameStateManager(){
         mPlayerList = new ArrayList<>();
+        mBattleState= new Army[4];
     }
 
     public static GameStateManager getInstance() {
@@ -134,6 +138,12 @@ public class GameStateManager {
                     break;
             }
         }
-
     }
+    public void addUnitToBattlefield(Army unit, int slot){
+        mBattleState[slot]=unit;
+    }
+    public Army[] getBattleState(){
+        return mBattleState;
+    }
+
 }

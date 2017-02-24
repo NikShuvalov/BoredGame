@@ -7,8 +7,8 @@ android {
         applicationId "shuvalov.nikita.boredgame"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 5
-        versionName "Pre-Alpha prototype 0.5"
+        versionCode 6
+        versionName "Pre-Alpha prototype 0.6"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -33,6 +33,7 @@ dependencies {
     compile 'com.android.support:support-v4:25.1.1'
     testCompile 'junit:junit:4.12'
 }
+
 
 
 

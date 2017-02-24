@@ -11,5 +11,8 @@
     <item
         android:id = "@+id/town_option"
         android:title="Town"/>
+    <item
+        android:id="@+id/battle_option"
+        android:title="Battle"/>
 
 </menu>

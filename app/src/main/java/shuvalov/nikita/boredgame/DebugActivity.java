@@ -68,6 +68,10 @@ public class DebugActivity extends AppCompatActivity implements NavigationView.O
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, TownFragment.newInstance()).commit();
                 mDrawerLayout.closeDrawers();
                 break;
+            case R.id.battle_option:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, BattleFragment.newInstance()).commit();
+                mDrawerLayout.closeDrawers();
+                break;
         }
         return false;
     }
