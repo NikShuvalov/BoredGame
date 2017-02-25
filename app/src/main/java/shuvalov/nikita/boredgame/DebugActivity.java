@@ -18,7 +18,7 @@ import shuvalov.nikita.boredgame.Game.GameUtils;
 import shuvalov.nikita.boredgame.Players.BaseCharacterRace;
 import shuvalov.nikita.boredgame.Players.CharacterFragment;
 
-public class DebugActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DraftFragment.BeginDraftResolveStepListener, DraftResolveFragment.DraftResolveListener {
+public class DebugActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DraftFragment.BeginDraftResolveStepListener, DraftResolveFragment.DraftResolveListener, BattleFragment.CompletedBattlePhaseListener {
     private Toolbar mToolbar;
     public TextView mStockpileText;
     private DrawerLayout mDrawerLayout;
@@ -69,7 +69,7 @@ public class DebugActivity extends AppCompatActivity implements NavigationView.O
                 mDrawerLayout.closeDrawers();
                 break;
             case R.id.battle_option:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, BattleFragment.newInstance()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, BattleFragment.newInstance(this)).commit();
                 mDrawerLayout.closeDrawers();
                 break;
         }
@@ -97,4 +97,9 @@ public class DebugActivity extends AppCompatActivity implements NavigationView.O
         mStockpileText.setText(GameUtils.currentResourceStockpile(GameStateManager.getInstance().getPlayer(0)));
     }
 
+
+    @Override
+    public void completedBattlePhase() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,CharacterFragment.newInstance()).commit();
+    }
 }

@@ -5,6 +5,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import shuvalov.nikita.boredgame.BattleFragment;
 import shuvalov.nikita.boredgame.Buildings.Building;
 import shuvalov.nikita.boredgame.Cards.ActionCard;
 import shuvalov.nikita.boredgame.Cards.ResourceCard;
@@ -27,7 +28,7 @@ public class GameStateManager {
 
     private GameStateManager(){
         mPlayerList = new ArrayList<>();
-        mBattleState= new Army[4];
+        mBattleState= new Army[BattleFragment.COLUMN_AMOUNT*2];
     }
 
     public static GameStateManager getInstance() {
@@ -144,6 +145,11 @@ public class GameStateManager {
     }
     public Army[] getBattleState(){
         return mBattleState;
+    }
+    public void resetBattleState(){
+        for(int i=0;i<mBattleState.length;i++){
+            mBattleState[i]=null;
+        }
     }
 
 }

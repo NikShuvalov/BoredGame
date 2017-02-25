@@ -88,7 +88,17 @@ public abstract class Army {
     }
     //</End Getters and setters>
 
-    //ToDo: Damage and kill check
-
-
+    /**
+     * Use to apply damage to unit and check if survived.
+     *
+     * @param damage Amount of damage the unit takes
+     * @return False if unit survives, True if unit dies.
+     */
+    public boolean takeDamage(int damage){
+        mHp-=damage;
+        if(mHp<=0){
+            return true;
+        }
+        return false;
+    }
 }

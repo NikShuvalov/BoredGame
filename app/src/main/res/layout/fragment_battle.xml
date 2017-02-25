@@ -31,4 +31,29 @@
         android:layout_height="match_parent"
         android:layout_below="@id/slots_recycler"
         android:layout_above="@id/combat_start_butt"/>
+
+    <!--ToDo: Consider replacing with a RecyclerView-->
+    <LinearLayout
+        android:id="@+id/outcome_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/slots_recycler"
+        android:visibility="invisible">
+
+        <TextView
+            android:id="@+id/slot_0_outcome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+        <TextView
+            android:id="@+id/slot_1_outcome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+
+
 </RelativeLayout>
