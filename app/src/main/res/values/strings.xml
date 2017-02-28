@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name">Bored Game</string>
 
+    <!--Resources-->
+    <string-array name="resources">
+        <item>Pick resource</item>
+        <item>Wood</item>
+        <item>Iron</item>
+        <item>Stone</item>
+        <item>Gold</item>
+        <item>Mana</item>
+    </string-array>
+
     <!--Building Text-->
     <string name="lumber_mill_name">Lumber mill</string>
     <string name="lumber_mill_description">A run-of-the-mill lumber mill. The lumber mill helps produce more lumber for your town. A counter is added for every wood resource card you draft. Remove %s counters to gain 1 wood.</string>

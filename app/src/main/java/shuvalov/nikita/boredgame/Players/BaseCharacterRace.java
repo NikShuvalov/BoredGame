@@ -69,7 +69,7 @@ public abstract class BaseCharacterRace {
         townBuildings.add(new MercGuild());
         townBuildings.add(new SummonersGuild());
         townBuildings.add(new SpyDen());
-        townBuildings.add(new Marketplace());
+//        townBuildings.add(new Marketplace());
 
     }
 

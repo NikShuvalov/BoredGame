@@ -44,6 +44,11 @@ public class GameConstants {
     public static final int WOOD_GOLEM_ID = 3001;
     public static final int WARSERF_ID = 3002;
 
+    public static final int YETI_ALLY_ID = 3050;
+
+    //Mob Ids
+    public static final int YETI_MOB_ID = 3150;
+
 
 
 
