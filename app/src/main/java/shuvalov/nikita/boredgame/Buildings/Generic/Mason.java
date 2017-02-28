@@ -1,6 +1,7 @@
 package shuvalov.nikita.boredgame.Buildings.Generic;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import shuvalov.nikita.boredgame.Buildings.Building;
 import shuvalov.nikita.boredgame.GameConstants;
@@ -31,11 +32,13 @@ public class Mason extends Building {
     }
 
     @Override
-    public boolean useAbility(BaseCharacterRace player) {
+    public boolean useAbility(BaseCharacterRace player, Context context) {
         if(getCounters()<(5-getLevel())){
             return false;
         }
         removeCounters(5-getLevel());
+        player.addStone(1);
+        Toast.makeText(context, "Added 1 stone", Toast.LENGTH_SHORT).show();
         return true;
     }
 

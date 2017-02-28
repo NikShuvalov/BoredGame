@@ -38,7 +38,7 @@ public abstract class Building {
 
     public abstract String getName(Context context);
     public abstract String getDescription(Context context);
-    public abstract boolean useAbility(BaseCharacterRace player);
+    public abstract boolean useAbility(BaseCharacterRace player, Context context);
     public abstract int[] getCost();
 
 

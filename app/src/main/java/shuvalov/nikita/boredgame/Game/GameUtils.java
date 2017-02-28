@@ -143,6 +143,7 @@ public class GameUtils {
             //ToDo: Apply damage to structure.
         }else{
             outcomeText = "Nothing to see here folks.";
+            GameStateManager.getInstance().getPlayer(0).addUnitToArmy(defendingUnit);//ToDo: Hard-coded for debugging, only returning defending unit to player, not attacking unit to computer.
         }
         return outcomeText;
     }

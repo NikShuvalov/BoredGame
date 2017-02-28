@@ -1,6 +1,7 @@
 package shuvalov.nikita.boredgame.Buildings.Generic;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import shuvalov.nikita.boredgame.Buildings.Building;
 import shuvalov.nikita.boredgame.GameConstants;
@@ -32,10 +33,12 @@ public class LumberMill extends Building {
 
     //This is to be adjusted depending on how I'm using this building.
     @Override
-    public boolean useAbility(BaseCharacterRace player) {
+    public boolean useAbility(BaseCharacterRace player, Context context) {
         if(getCounters()<(5-getLevel())){
             return false;
         }
+        player.addWood(1);
+        Toast.makeText(context, "Added 1 wood", Toast.LENGTH_SHORT).show();
         removeCounters(5-getLevel());
         return true;
     }

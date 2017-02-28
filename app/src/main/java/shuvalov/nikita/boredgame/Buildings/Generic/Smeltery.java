@@ -1,6 +1,7 @@
 package shuvalov.nikita.boredgame.Buildings.Generic;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import shuvalov.nikita.boredgame.Buildings.Building;
 import shuvalov.nikita.boredgame.GameConstants;
@@ -31,10 +32,12 @@ public class Smeltery extends Building {
     }
 
     @Override
-    public boolean useAbility(BaseCharacterRace player) {
+    public boolean useAbility(BaseCharacterRace player, Context context) {
         if(getCounters()<(5-getLevel())){
             return false;
         }
+        player.addIron(1);
+        Toast.makeText(context, "Added 1 iron", Toast.LENGTH_SHORT).show();
         removeCounters(5-getLevel());
         return true;
     }

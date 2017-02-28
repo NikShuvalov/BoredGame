@@ -73,9 +73,9 @@ public class TownBuildingRecyclerAdapter extends RecyclerView.Adapter<BuildingVi
             holder.mAbilityButt.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(building.useAbility(GameStateManager.getInstance().getPlayer(0))){
-                        applyEffect(building, view.getContext());
+                    if(building.useAbility(GameStateManager.getInstance().getPlayer(0), view.getContext())){
                         notifyItemChanged(holder.getAdapterPosition());
+                        GameStateManager.getInstance().setResourceText(GameUtils.currentResourceStockpile(GameStateManager.getInstance().getPlayer(0)));
                     }else{
                         Toast.makeText(view.getContext(), "Not enough", Toast.LENGTH_SHORT).show();
                     }
@@ -90,37 +90,4 @@ public class TownBuildingRecyclerAdapter extends RecyclerView.Adapter<BuildingVi
         return mBuildings.size();
     }
 
-    public void applyEffect(Building building, Context context){
-        switch (building.getId()){
-            case GameConstants.LUMBER_MILL_ID:
-                GameStateManager.getInstance().getPlayer(0).addWood(1);
-                Toast.makeText(context, "Added 1 wood", Toast.LENGTH_SHORT).show();
-                break;
-            case GameConstants.SMELTERY_ID:
-                GameStateManager.getInstance().getPlayer(0).addIron(1);
-                Toast.makeText(context, "Added 1 iron", Toast.LENGTH_SHORT).show();
-                break;
-            case GameConstants.MASON_ID:
-                GameStateManager.getInstance().getPlayer(0).addStone(1);
-                Toast.makeText(context, "Added 1 stone", Toast.LENGTH_SHORT).show();
-                break;
-            case GameConstants.JEWELER_ID:
-                GameStateManager.getInstance().getPlayer(0).addGold(1);
-                Toast.makeText(context, "Added 1 gold", Toast.LENGTH_SHORT).show();
-                break;
-            case GameConstants.MANA_WELL_ID:
-                GameStateManager.getInstance().getPlayer(0).addMana(1);
-                Toast.makeText(context, "Added 1 mana", Toast.LENGTH_SHORT).show();
-                break;
-            case GameConstants.MERCGUILD_ID:
-                GameStateManager.getInstance().getPlayer(0).addUnitToArmy(new Mercenary());
-                Toast.makeText(context, "Hired a mercenary", Toast.LENGTH_SHORT).show();
-                break;
-            case GameConstants.SUMM_GUILD_ID:
-                GameStateManager.getInstance().getPlayer(0).addUnitToArmy(new WoodGolem());
-                Toast.makeText(context,"Enlisted a Wood Golem", Toast.LENGTH_SHORT).show();
-                break;
-        }
-        GameStateManager.getInstance().setResourceText(GameUtils.currentResourceStockpile(GameStateManager.getInstance().getPlayer(0)));
-    }
 }

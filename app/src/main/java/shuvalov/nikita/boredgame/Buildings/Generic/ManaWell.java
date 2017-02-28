@@ -1,6 +1,7 @@
 package shuvalov.nikita.boredgame.Buildings.Generic;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import shuvalov.nikita.boredgame.Buildings.Building;
 import shuvalov.nikita.boredgame.GameConstants;
@@ -30,11 +31,13 @@ public class ManaWell extends Building{
     }
 
     @Override
-    public boolean useAbility(BaseCharacterRace player) {
+    public boolean useAbility(BaseCharacterRace player, Context context) {
         if(getCounters()<(5-getLevel())){
             return false;
         }
         removeCounters(5-getLevel());
+        player.addMana(1);
+        Toast.makeText(context, "Added 1 mana", Toast.LENGTH_SHORT).show();
         return true;
     }
 

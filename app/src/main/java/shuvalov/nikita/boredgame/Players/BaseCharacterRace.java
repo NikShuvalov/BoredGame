@@ -9,14 +9,17 @@ import shuvalov.nikita.boredgame.Buildings.Building;
 import shuvalov.nikita.boredgame.Buildings.Generic.Jeweler;
 import shuvalov.nikita.boredgame.Buildings.Generic.LumberMill;
 import shuvalov.nikita.boredgame.Buildings.Generic.ManaWell;
+import shuvalov.nikita.boredgame.Buildings.Generic.Marketplace;
 import shuvalov.nikita.boredgame.Buildings.Generic.Mason;
 import shuvalov.nikita.boredgame.Buildings.Generic.MercGuild;
 import shuvalov.nikita.boredgame.Buildings.Generic.Smeltery;
+import shuvalov.nikita.boredgame.Buildings.Generic.SpyDen;
 import shuvalov.nikita.boredgame.Buildings.Generic.SummonersGuild;
 import shuvalov.nikita.boredgame.Cards.ActionCard;
 import shuvalov.nikita.boredgame.Cards.ResourceCard;
 import shuvalov.nikita.boredgame.GameConstants;
 import shuvalov.nikita.boredgame.Units.Army;
+import shuvalov.nikita.boredgame.Units.WarSerf;
 
 /**
  * Created by NikitaShuvalov on 1/25/17.
@@ -50,6 +53,7 @@ public abstract class BaseCharacterRace {
         this.actionHand = new ArrayList<>();
         this.playerArmy = new ArrayList<>();
         createBasicBuildings();
+        setUpStartingArmy();
         draftStep=0;
         draftCacheGold=draftCacheWood=draftCacheStone=draftCacheIron=draftCacheMana=0f;
     }
@@ -64,6 +68,15 @@ public abstract class BaseCharacterRace {
         townBuildings.add(new ManaWell());
         townBuildings.add(new MercGuild());
         townBuildings.add(new SummonersGuild());
+        townBuildings.add(new SpyDen());
+        townBuildings.add(new Marketplace());
+
+    }
+
+    private void setUpStartingArmy(){
+        for(int i =0; i<GameConstants.STARTING_SERFS;i++){
+            playerArmy.add(new WarSerf());
+        }
     }
 
 

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import shuvalov.nikita.boredgame.Buildings.Town.TownFragment;
 import shuvalov.nikita.boredgame.Draft.DraftFragment;
@@ -70,6 +71,10 @@ public class DebugActivity extends AppCompatActivity implements NavigationView.O
                 break;
             case R.id.battle_option:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, BattleFragment.newInstance(this)).commit();
+                mDrawerLayout.closeDrawers();
+                break;
+            case R.id.wilderness_option:
+                Toast.makeText(this, "COMING SOON! With 100% more monsters.", Toast.LENGTH_SHORT).show();
                 mDrawerLayout.closeDrawers();
                 break;
         }

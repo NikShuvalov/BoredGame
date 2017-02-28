@@ -4,6 +4,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Stack;
 
 import shuvalov.nikita.boredgame.BattleFragment;
 import shuvalov.nikita.boredgame.Buildings.Building;
@@ -22,6 +25,7 @@ public class GameStateManager {
     private HandDisplayRecyclerAdapter mHandDisplayAdapter;
     private TextView mToolbarText; //FixMe: Remove this once I have a better way to make a HUD.
     private Army[] mBattleState;
+    private Stack<ActionCard> mActionCardDeck;
 
 
     private static GameStateManager sGameStateManager;
@@ -29,7 +33,11 @@ public class GameStateManager {
     private GameStateManager(){
         mPlayerList = new ArrayList<>();
         mBattleState= new Army[BattleFragment.COLUMN_AMOUNT*2];
+        mActionCardDeck = new Stack<>();
     }
+
+
+
 
     public static GameStateManager getInstance() {
         if(sGameStateManager==null){
@@ -152,4 +160,21 @@ public class GameStateManager {
         }
     }
 
+    public Stack<ActionCard> getActionCardDeck() {
+        return mActionCardDeck;
+    }
+
+    public ActionCard getTopActionCard(){
+        if(mActionCardDeck.size()>0){
+            return mActionCardDeck.pop();
+        }
+        return null;
+    }
+
+    public void setActionCardDeck(ArrayList<ActionCard> actionCardDeck) {
+        Collections.shuffle(actionCardDeck);
+        for(ActionCard card: actionCardDeck){
+            mActionCardDeck.add(card);
+        }
+    }
 }

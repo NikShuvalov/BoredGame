@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 
 
+import java.util.ArrayList;
+import java.util.Stack;
+
 import shuvalov.nikita.boredgame.Cards.ActionCard;
 import shuvalov.nikita.boredgame.Game.GameStateManager;
 import shuvalov.nikita.boredgame.Players.Human;
@@ -17,7 +20,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public static final String SHARED_PREFERENCES = "Bored Preferences";
     public static final String USER_NAME_PREF = "User name";
-    public static final String FIREBASE_SERVER_REF = "Servers";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Human player = new Human("Player", 0);
         Human computer = new Human ("Computer", 1);
 
+        GameStateManager.getInstance().setActionCardDeck(ActionCard.createDeck(this));
         player.addActionCardsToHand(ActionCard.createDeck(this));
         computer.addActionCardsToHand(ActionCard.createDeck(this));
 

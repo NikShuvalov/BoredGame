@@ -1,12 +1,14 @@
 package shuvalov.nikita.boredgame.Buildings.Generic;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import shuvalov.nikita.boredgame.Buildings.Building;
 import shuvalov.nikita.boredgame.Game.GameUtils;
 import shuvalov.nikita.boredgame.GameConstants;
 import shuvalov.nikita.boredgame.Players.BaseCharacterRace;
 import shuvalov.nikita.boredgame.R;
+import shuvalov.nikita.boredgame.Units.WoodGolem;
 
 /**
  * Created by NikitaShuvalov on 2/23/17.
@@ -32,8 +34,10 @@ public class SummonersGuild extends Building {
     }
 
     @Override
-    public boolean useAbility(BaseCharacterRace player) {
+    public boolean useAbility(BaseCharacterRace player, Context context) {
         if(GameUtils.canPayCost(player,WOOD_GOLEM_SUMMON_COST)){
+            player.addUnitToArmy(new WoodGolem());
+            Toast.makeText(context,"Enlisted a Wood Golem", Toast.LENGTH_SHORT).show();
             return true;
         }
         return false;

@@ -15,6 +15,7 @@ public class GameConstants {
     public static final String PLAYER = "player";
     public static final String PLAYER_ONE = "player1";
     public static final String PLAYER_TWO = "player2";
+    public static final int STARTING_SERFS= 3;
 
     //Building Ids
     public static final int LUMBER_MILL_ID = 1000; //Lumber generator building id;
@@ -25,6 +26,9 @@ public class GameConstants {
 
     public static final int MERCGUILD_ID = 1010;
     public static final int SUMM_GUILD_ID= 1011;
+
+    public static final int SPYDEN_ID= 1020;
+    public static final int MARKETPLACE_ID = 1021;
 
     //Action Card Values
     public static final int RUINED_SHIPMENT_WOOD_ID = 2000;
@@ -38,6 +42,7 @@ public class GameConstants {
     //Unit Ids
     public static final int MERCENARY_ID = 3000;
     public static final int WOOD_GOLEM_ID = 3001;
+    public static final int WARSERF_ID = 3002;
 
 
 
