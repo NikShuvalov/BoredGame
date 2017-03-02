@@ -53,7 +53,7 @@ public class WildernessRecyclerAdapter extends RecyclerView.Adapter<WildernessVi
     }
 
     public Mob getSelectedUnit() {
-        if(mSelectedPosition==-1){
+        if(mSelectedPosition!=-1){
             return mWildernessState[mSelectedPosition];
         }
         return null;

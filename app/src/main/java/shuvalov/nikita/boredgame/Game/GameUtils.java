@@ -6,6 +6,7 @@ import java.util.Random;
 import shuvalov.nikita.boredgame.Cards.ResourceCard;
 import shuvalov.nikita.boredgame.Players.BaseCharacterRace;
 import shuvalov.nikita.boredgame.Units.Army;
+import shuvalov.nikita.boredgame.Units.Mobs.Mob;
 
 /**
  * Created by NikitaShuvalov on 2/20/17.
@@ -149,5 +150,37 @@ public class GameUtils {
         return outcomeText;
     }
 
+    public static String wildernessBattle(ArrayList<Army> playersUnits, Mob creature){
+        Random rng = new Random();
+        StringBuilder stringBuilder = new StringBuilder();
+        int i =0;
+        boolean done = false;
+        for(Army unit: playersUnits){
+            if(done){
+                break;
+            }
+            i++;
+            int attack = rng.nextInt(unit.getAttack()-1)+1;
+            int defense = rng.nextInt(creature.getDefense()-1)+1;
+            int difference = defense-attack;
+            stringBuilder.append(String.format("Fight #%s:\n",i));
+            if(difference<0){
+                stringBuilder.append(String.format("Player's %s rolled a %s.\nEnemy %s rolled a %s.\nEnemy %s took %s damage\n", unit.getName(),attack,creature.getName(),defense,creature.getName(),Math.abs(difference)));
+                if(creature.takeDamage(Math.abs(difference))){
+                    stringBuilder.append(String.format("Enemy %s took lethal damage and died",creature.getName()));
+                    done = true;
+                }
+            }else if (difference>0){
+                stringBuilder.append(String.format("Player's %s rolled a %s.\nEnemy %s rolled a %s.\nPlayer's %s took %s damage\n", unit.getName(),attack,creature.getName(),defense, unit.getName(),Math.abs(difference)));
+                if(unit.takeDamage(difference)){
+                    stringBuilder.append(String.format("Player's %s took lethal damage and died\n",unit.getName()));
+                }
+            }else{
+                stringBuilder.append(String.format("Both combatants rolled a %s.\nNo damage dealt\n",attack));
+            }
+            stringBuilder.append("\n---------------------\n");
+        }
+        return stringBuilder.toString();
+    }
 
 }
