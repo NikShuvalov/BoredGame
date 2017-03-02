@@ -49,6 +49,8 @@ public class GameConstants {
     //Mob Ids
     public static final int YETI_MOB_ID = 3150;
 
+    public static final int WILDERNESS_SLOTS =3;
+
 
 
 

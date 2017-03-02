@@ -1,10 +1,11 @@
-package shuvalov.nikita.boredgame;
+package shuvalov.nikita.boredgame.Combat;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import shuvalov.nikita.boredgame.R;
 import shuvalov.nikita.boredgame.Units.Army;
 
 /**

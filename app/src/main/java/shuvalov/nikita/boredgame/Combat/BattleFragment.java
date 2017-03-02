@@ -1,9 +1,8 @@
-package shuvalov.nikita.boredgame;
+package shuvalov.nikita.boredgame.Combat;
 
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +16,7 @@ import android.widget.Toast;
 
 import shuvalov.nikita.boredgame.Game.GameStateManager;
 import shuvalov.nikita.boredgame.Game.GameUtils;
+import shuvalov.nikita.boredgame.R;
 import shuvalov.nikita.boredgame.Units.Army;
 import shuvalov.nikita.boredgame.Units.Display.ArmyRecyclerAdapter;
 import shuvalov.nikita.boredgame.Units.Mercenary;

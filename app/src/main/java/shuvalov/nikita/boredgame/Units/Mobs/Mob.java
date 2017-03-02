@@ -1,5 +1,7 @@
 package shuvalov.nikita.boredgame.Units.Mobs;
 
+import android.content.Context;
+
 import shuvalov.nikita.boredgame.Players.BaseCharacterRace;
 import shuvalov.nikita.boredgame.Units.Army;
 
@@ -20,4 +22,5 @@ public abstract class Mob extends Army {
     }
 
     public abstract void onDefeated(BaseCharacterRace player);//ToDo: Probably going to have to pass player to this function.
+    public abstract String getDescriptionText(Context context);
 }

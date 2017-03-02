@@ -66,7 +66,7 @@ public class CharacterFragment extends Fragment {
     }
 
     public void setUpRecycler(){
-        ArmyRecyclerAdapter adapter = new ArmyRecyclerAdapter(GameStateManager.getInstance().getPlayer(0).getPlayerArmy(), false);
+        ArmyRecyclerAdapter adapter = new ArmyRecyclerAdapter(GameStateManager.getInstance().getPlayer(0).getPlayerArmy());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         mArmyRecycler.setAdapter(adapter);
         mArmyRecycler.setLayoutManager(linearLayoutManager);

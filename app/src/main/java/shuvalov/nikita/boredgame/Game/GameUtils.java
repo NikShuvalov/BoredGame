@@ -113,6 +113,7 @@ public class GameUtils {
             int defense = rng.nextInt(defendingUnit.getDefense()-1)+1;
             if(attack==defense){
                 outcomeText= String.format("Both units rolled a %s. \nBattle ends in a tie.\nNo one takes damage.", attack);
+                GameStateManager.getInstance().getPlayer(0).addUnitToArmy(defendingUnit);//ToDo: Hard-coded for debugging, only returning defending unit to player, not attacking unit to computer.
             }else if (attack>defense){
                 int damage = attack-defense;
                 String defenderName = defendingUnit.getName();

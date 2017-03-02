@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+              android:orientation="vertical"
+             tools:context="shuvalov.nikita.boredgame.Wilderness.WildernessFragment">
+
+    <Button
+        android:id="@+id/debug_spawn_butt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="spawn enemies"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/wilderness_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/player_army_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/button_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/cancel_action"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="DON\'T FiGHT, \nPUssy"/>
+        <Button
+            android:id="@+id/fight_action"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="MONKEY!!! KNIFE!!! \nFIGHT!!!"/>
+    </LinearLayout>
+
+
+</LinearLayout>

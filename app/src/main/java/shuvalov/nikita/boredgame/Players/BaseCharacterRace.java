@@ -19,6 +19,7 @@ import shuvalov.nikita.boredgame.Cards.ActionCard;
 import shuvalov.nikita.boredgame.Cards.ResourceCard;
 import shuvalov.nikita.boredgame.GameConstants;
 import shuvalov.nikita.boredgame.Units.Army;
+import shuvalov.nikita.boredgame.Units.Mobs.Yeti;
 import shuvalov.nikita.boredgame.Units.WarSerf;
 
 /**

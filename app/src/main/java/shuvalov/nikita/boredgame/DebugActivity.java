@@ -12,14 +12,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import shuvalov.nikita.boredgame.Buildings.Town.TownFragment;
+import shuvalov.nikita.boredgame.Combat.BattleFragment;
 import shuvalov.nikita.boredgame.Draft.DraftFragment;
 import shuvalov.nikita.boredgame.Draft.DraftResolveFragment;
 import shuvalov.nikita.boredgame.Game.GameStateManager;
 import shuvalov.nikita.boredgame.Game.GameUtils;
 import shuvalov.nikita.boredgame.Players.BaseCharacterRace;
 import shuvalov.nikita.boredgame.Players.CharacterFragment;
+import shuvalov.nikita.boredgame.Wilderness.WildernessFragment;
 
-public class DebugActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DraftFragment.BeginDraftResolveStepListener, DraftResolveFragment.DraftResolveListener, BattleFragment.CompletedBattlePhaseListener {
+public class DebugActivity extends AppCompatActivity implements
+        NavigationView.OnNavigationItemSelectedListener,
+        DraftFragment.BeginDraftResolveStepListener,
+        DraftResolveFragment.DraftResolveListener,
+        BattleFragment.CompletedBattlePhaseListener,
+        WildernessFragment.OnWildernessExitListener{
     private Toolbar mToolbar;
     public TextView mStockpileText;
     private DrawerLayout mDrawerLayout;
@@ -74,7 +81,7 @@ public class DebugActivity extends AppCompatActivity implements NavigationView.O
                 mDrawerLayout.closeDrawers();
                 break;
             case R.id.wilderness_option:
-                Toast.makeText(this, "COMING SOON! With 100% more monsters.", Toast.LENGTH_SHORT).show();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, WildernessFragment.newInstance(this)).commit();
                 mDrawerLayout.closeDrawers();
                 break;
         }
@@ -106,5 +113,11 @@ public class DebugActivity extends AppCompatActivity implements NavigationView.O
     @Override
     public void completedBattlePhase() {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,CharacterFragment.newInstance()).commit();
+    }
+
+    @Override
+    public void onWildernessExit() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,CharacterFragment.newInstance()).commit();
+
     }
 }

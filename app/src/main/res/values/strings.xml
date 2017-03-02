@@ -33,11 +33,11 @@
     <string name="summoners_guild_name">Summoners\' Guild</string>
     <string name="summoners_guild_description">A congregation of powerful magic users. You can enlist their aid to summon golems at a cost. Summon a wood golem for 1 wood, 2 gold, and 3 mana</string>
 
-    <string name = "marketplace_name">Marketplace</string>
-    <string name = "marketplace_description">The local market is a great place to trade commodities. \nSpend 2 of any single resource: Gain a single resource of your choice. \nYou can use this action as many times per turn as the level of this building.</string>
+    <string name="marketplace_name">Marketplace</string>
+    <string name="marketplace_description">The local market is a great place to trade commodities. \nSpend 2 of any single resource: Gain a single resource of your choice. \nYou can use this action as many times per turn as the level of this building.</string>
 
-    <string name = "spy_den_name">Spy Den</string>
-    <string name = "spy_den_description">The spies here specialize in acquiring spells. \nRemove a counter at the beginning of every turn. \nAdd a counter: Spend %s (1 + 2 * counters) gold to draw an action card. </string>
+    <string name="spy_den_name">Spy Den</string>
+    <string name="spy_den_description">The spies here specialize in acquiring spells. \nRemove a counter at the beginning of every turn. \nAdd a counter: Spend %s (1 + 2 * counters) gold to draw an action card. </string>
 
     <!--Character Text-->
     <string name="human_class">Human</string>
@@ -48,6 +48,8 @@
     <string name="navigation_open">Navigation Drawer opened</string>
     <string name="navigation_closed">Navigation Drawer closed</string>
 
+    <!--Mob Text-->
+    <string name="yeti_description">If you defeat the Yeti in battle, it will join your army.</string>
 
     <!--Action Card Text-->
     <string-array name="action_card_names">

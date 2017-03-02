@@ -5,16 +5,17 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 import java.util.Stack;
 
-import shuvalov.nikita.boredgame.BattleFragment;
+import shuvalov.nikita.boredgame.Combat.BattleFragment;
 import shuvalov.nikita.boredgame.Buildings.Building;
 import shuvalov.nikita.boredgame.Cards.ActionCard;
 import shuvalov.nikita.boredgame.Cards.ResourceCard;
 import shuvalov.nikita.boredgame.GameConstants;
 import shuvalov.nikita.boredgame.Players.BaseCharacterRace;
 import shuvalov.nikita.boredgame.Units.Army;
+import shuvalov.nikita.boredgame.Units.Mobs.Mob;
+import shuvalov.nikita.boredgame.Units.Mobs.Yeti;
 
 /**
  * Created by NikitaShuvalov on 2/19/17.
@@ -24,8 +25,10 @@ public class GameStateManager {
     private ArrayList<BaseCharacterRace> mPlayerList;
     private HandDisplayRecyclerAdapter mHandDisplayAdapter;
     private TextView mToolbarText; //FixMe: Remove this once I have a better way to make a HUD.
-    private Army[] mBattleState;
+    private Army[] mBattleState; //Battlestate between players, if more than 2 players this will need a change.
     private Stack<ActionCard> mActionCardDeck;
+    private Mob[] mWildernessState;
+
 
 
     private static GameStateManager sGameStateManager;
@@ -34,6 +37,7 @@ public class GameStateManager {
         mPlayerList = new ArrayList<>();
         mBattleState= new Army[BattleFragment.COLUMN_AMOUNT*2];
         mActionCardDeck = new Stack<>();
+        mWildernessState = new Mob[GameConstants.WILDERNESS_SLOTS];
     }
 
 
@@ -158,6 +162,18 @@ public class GameStateManager {
         for(int i=0;i<mBattleState.length;i++){
             mBattleState[i]=null;
         }
+    }
+
+    public void replenishWilderness(){
+        for(int i = 0; i<mWildernessState.length;i++){
+            if(mWildernessState[i]==null){
+                mWildernessState[i] = new Yeti(false);
+            }
+        }
+    }
+
+    public Mob[] getWildernessState() {
+        return mWildernessState;
     }
 
     public Stack<ActionCard> getActionCardDeck() {
