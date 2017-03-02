@@ -150,6 +150,7 @@ public class GameUtils {
         return outcomeText;
     }
 
+    //ToDo: Might be better to pass player instead of army, since we're going to be using the player anyway.
     public static String wildernessBattle(ArrayList<Army> playersUnits, Mob creature){
         Random rng = new Random();
         StringBuilder stringBuilder = new StringBuilder();
@@ -168,6 +169,7 @@ public class GameUtils {
                 stringBuilder.append(String.format("Player's %s rolled a %s.\nEnemy %s rolled a %s.\nEnemy %s took %s damage\n", unit.getName(),attack,creature.getName(),defense,creature.getName(),Math.abs(difference)));
                 if(creature.takeDamage(Math.abs(difference))){
                     stringBuilder.append(String.format("Enemy %s took lethal damage and died",creature.getName()));
+                    creature.onDefeated(GameStateManager.getInstance().getPlayer(0));
                     done = true;
                 }
             }else if (difference>0){

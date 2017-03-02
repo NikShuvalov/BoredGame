@@ -3,6 +3,7 @@ package shuvalov.nikita.boredgame.Wilderness;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -30,7 +31,7 @@ public class WildernessFragment extends Fragment implements View.OnClickListener
     private WildernessRecyclerAdapter mWildernessAdapter;
     private ArmyRecyclerAdapter mArmyAdapter;
     private static OnWildernessExitListener mExitListener;
-
+    private boolean mBattled;
 
     public WildernessFragment() {
     }
@@ -54,6 +55,7 @@ public class WildernessFragment extends Fragment implements View.OnClickListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_wilderness, container, false);
+        mBattled = false;
 
         mWildernessView = (RecyclerView)view.findViewById(R.id.wilderness_recycler);
         mArmyView = (RecyclerView)view.findViewById(R.id.player_army_recycler);
@@ -87,22 +89,34 @@ public class WildernessFragment extends Fragment implements View.OnClickListener
         switch(view.getId()){
             case R.id.cancel_action:
                 mExitListener.onWildernessExit();
-                //Leave wilderness without fighting, go to next phase
                 break;
             case R.id.fight_action:
-                Mob selectedMobUnit = mWildernessAdapter.getSelectedUnit();
-                ArrayList<Army> playerTroops = mArmyAdapter.getSelectedArmy();
-                //ToDo: Add a check to see if any army units are selected as well.
-                if(selectedMobUnit==null){
-                    Toast.makeText(getContext(), "No creature selected", Toast.LENGTH_SHORT).show();
-                }else{
-                    if(playerTroops.isEmpty()){
-                        Toast.makeText(getContext(), "No units were selected to fight with", Toast.LENGTH_SHORT).show();
+                if(!mBattled){
+                    Mob selectedMobUnit = mWildernessAdapter.getSelectedUnit();
+                    ArrayList<Army> playerTroops = mArmyAdapter.getSelectedArmy();
+                    //ToDo: Add a check to see if any army units are selected as well.
+                    if(selectedMobUnit==null){
+                        Toast.makeText(getContext(), "No creature selected", Toast.LENGTH_SHORT).show();
                     }else{
-                        String battleLog = GameUtils.wildernessBattle(mArmyAdapter.getSelectedArmy(),mWildernessAdapter.getSelectedUnit());
-                        Log.d("Battle Log", "onClick: "+battleLog);
-                        mExitListener.onWildernessExit();
-                    }
+                        if(playerTroops.isEmpty()){
+                            Toast.makeText(getContext(), "No units were selected to fight with", Toast.LENGTH_SHORT).show();
+                        }else{
+                            String battleLog = GameUtils.wildernessBattle(mArmyAdapter.getSelectedArmy(),mWildernessAdapter.getSelectedUnit());
+                            Log.d("Battle Log", "onClick: "+battleLog);
+                            mWildernessAdapter.notifyDataSetChanged();
+                            mArmyView.setAdapter(new ArmyRecyclerAdapter(mArmyAdapter.getSelectedArmy()));
+                            mBattled=true;
+                            mFight.setText("View Details");
+                            mPussyout.setText("Skip details");
+                            mBattled=false;
+                            //ToDo: Leave only the creature that was battled, remove the highlight from it.
+                        }
+                }
+
+                }
+                else{
+                    //ToDo: Display battle log details, either in new fragment or move everything in this fragment out and put a textView, or Alert Dialog.
+                    mExitListener.onWildernessExit();
                 }
                 break;
             case R.id.debug_spawn_butt:
@@ -113,6 +127,6 @@ public class WildernessFragment extends Fragment implements View.OnClickListener
         }
     }
     public interface OnWildernessExitListener{
-        public void onWildernessExit();
+        void onWildernessExit();
     }
 }
